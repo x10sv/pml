@@ -1,0 +1,99 @@
+{
+  "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
+  "scopeName": "source.pml",
+  "name": "Programmable Macro Language",
+  "fileTypes": [".pmlfrm", ".pmlmac", ".pmlfnc", ".pmlobj", ".pmldat"],
+  "patterns": [{
+      "include": "#keywords"
+    },
+    {
+      "include": "#strings"
+    },
+    {
+      "include": "#comments"
+    }
+  ],
+  "repository": {
+    "keywords": {
+      "patterns": [{
+          "name": "entity.name.function.pml",
+          "match": "(?i)\\.[a-z0-9]+"
+        },
+        {
+          "name": "keyword.control.pml",
+          "match": "\\b(if|else|elseif|endif|then|set|do|enddo|define|skip|return|any|is|object|true|false|values|indices|ind|var)\\b"
+        },
+        {
+          "name": "support.class.pml",
+          "match": "\\b(left|right|top|bottom|down|centre|path|width|height|container|dock|fill|member|dialog|resizable|size|none|all|xmin|xcen|xmax|ymin|ycen|ymax|anchor|volume|toggle|tooltip|pixmap|list|at|paragraph|text|button|callback)\\b"
+        },
+        {
+          "name": "support.class.pml",
+          "match": "(?i)\\b(FoldUpPanel|Single)\\b"
+        },
+        {
+          "name": "storage.modifier.pml",
+          "match": "\\b(ne|eq|gt|lt|ge|geq|le|leq|not|and|or|neq)\\b"
+        },
+        {
+          "name": "storage.modifier.pml",
+          "match": "\\b(using|namespace|function|endfunction|method|endmethod|handle|elsehandle|endhandle|exit|frame|view|setup|import|form)\\b"
+        },
+        {
+          "name": "storage.modifier.pml",
+          "match": "(?i)(?<!\\.)\\b[a-z\\d]+\\("
+        },
+        {
+          "name": "storage.modifier.pml",
+          "match": "\\b(show|load|loadform|hide|kill|free|refresh)\\b"
+        },
+        {
+          "name": "storage.modifier.pml",
+          "match": "\\b(array|string|real|bool|boolean|file|datetime|dbref)\\b"
+        },
+        {
+          "name": "variable.other.pml",
+          "match": "(?i)\\![a-z0-9]+"
+        },
+        {
+          "name": "entity.name.function.pml",
+          "match": "(?i)\\!\\![a-z0-9]+"
+        },
+        {
+          "name": "constant.numeric.decimal.pml",
+          "match": "\\b[0-9]+\\b"
+        }
+      ]
+    },
+    "strings": {
+      "patterns": [{
+          "name": "string.quoted.pml",
+          "begin": "'",
+          "end": "'"
+        },
+        {
+          "name": "string.double.quoted.pml",
+          "begin": "\"",
+          "end": "\""
+        },
+        {
+          "name": "string.quoted.pml",
+          "begin": "\\|",
+          "end": "\\|"
+        }
+      ]
+    },
+    "comments": {
+      "patterns": [{
+          "name": "comment.line.double-slash.pml",
+          "begin": "\\$\\(",
+          "end": "\\$\\)"
+        },
+        {
+          "name": "comment.line.double-slash.pml",
+          "match": "(?x)\\--.*"
+        }
+      ]
+    }
+  }
+}

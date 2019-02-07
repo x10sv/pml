@@ -1,0 +1,49 @@
+{
+  "name": "pml",
+  "displayName": "PML",
+  "description": "PML Language Highlighter and Snippets",
+  "version": "0.1.0",
+  "publisher": "angelincalu",
+  "engines": {
+    "vscode": "^1.30.0"
+  },
+  "categories": [
+    "Programming Languages",
+    "Snippets"
+  ],
+  "contributes": {
+    "languages": [{
+      "id": "pml",
+      "aliases": [
+        "Programmable Macro Language",
+        "pml"
+      ],
+      "extensions": [
+        ".pmlfrm",
+        ".pmlmac",
+        ".pmlfnc",
+        ".pmlobj",
+        ".pmldat"
+      ],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "pml",
+      "scopeName": "source.pml",
+      "path": "./syntaxes/pml.tmLanguage.json"
+    }],
+    "snippets": [{
+        "language": "pml",
+        "path": "./snippets/pmlfrm.json"
+      },
+      {
+        "language": "pml",
+        "path": "./snippets/pmlmet.json"
+      },
+      {
+        "language": "pml",
+        "path": "./snippets/pmlfnc.json"
+      }
+    ]
+  }
+}

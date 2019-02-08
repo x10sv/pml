@@ -18,14 +18,16 @@ As of this release it has the following snippets defined:
 - `pmlfunc` : Creates the basic scaffolding for a new pml function.
 - `pmlmet` : Creates the basic scaffolding for a new pml method.
 - `pmlobj` : Creates the basic scaffolding for a new pml object.
+- `pmlbut` : Creates the basic code for adding a new button on a plm form.
 
 ## Release Notes
 
 For a full list of changes please check `CHANGELOG.md`
 
-### 0.1.3
+### 0.1.4
 
-- Added new snippet `pmlobj` : used to create the scaffolding for a new pml object
+- Several fixes in `pmlformg` snippet.
+- Added new snippet `pmlbut` to add a button inside a pml form
 
 ---
 

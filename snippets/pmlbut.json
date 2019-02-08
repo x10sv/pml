@@ -1,0 +1,9 @@
+{
+    "New PML Form > Button definition": {
+        "prefix": "pmlbut",
+        "body": [
+            "button .${1:uniqueName} '${2:displayName}' anchor left + top  at y1 callback '!this.${3:methodName}()' width 10"
+        ],
+        "description": "Base for a new button inside a PML Form"
+    }
+}

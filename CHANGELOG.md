@@ -2,6 +2,11 @@
 
 All notable changes to the "pml" extension will be documented in this file.
 
+## [0.1.4]
+
+- Several fixes in `pmlformg` snippet.
+- Added new snippet `pmlbut` to add a button inside a pml form
+
 ## [0.1.3]
 
 - Added new snippet `pmlobj` : used to create the scaffolding for a new pml object

@@ -2,7 +2,7 @@
   "New PML Form Definition": {
     "prefix": "pmlform",
     "body": [
-      "-------------------------------------------------------------------------------",
+      "--------------------------------------------------------------------------------------",
       "--",
       "--",
       "-- Copyright $CURRENT_YEAR to current year. Company Name. All rights reserved.",
@@ -14,7 +14,7 @@
       "-- Date: \"$CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE\"",
       "-- Filename: \"$TM_FILENAME\"",
       "--",
-      "-------------------------------------------------------------------------------",
+      "--------------------------------------------------------------------------------------",
       "",
       "",
       "import 'MarApi'",
@@ -22,14 +22,24 @@
       "endhandle",
       "",
       "",
-      "setup form !!${2} size 100 20 VarChars dialog resizable",
+      "setup form !!${1:$TM_FILENAME_BASE} size 100 20 VarChars dialog resizable",
       "",
       "\tusing namespace 'Aveva.Pdms.Presentation'",
-      "\t!this.formtitle = '${1}'",
+      "\t!this.formtitle = '${2:New PML Form Title}'",
       "",
       "\t${0}",
       "",
-      "exit"
+      "exit",
+      "",
+      "",
+      "--------------------------------------------------------------------------------------",
+      "--  Constructor Method                                                              --",
+      "--------------------------------------------------------------------------------------",
+      "define method .${1}()",
+      "",
+      "\t",
+      "",
+      "endmethod"
     ],
     "description": "Base for a new PML Form"
   }

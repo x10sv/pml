@@ -2,6 +2,10 @@
 
 All notable changes to the "pml" extension will be documented in this file.
 
+## [0.1.3]
+
+- Added new snippet `pmlobj` : used to create the scaffolding for a new pml object
+
 ## [0.1.2]
 
 - Minor Changes

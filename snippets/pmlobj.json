@@ -1,6 +1,6 @@
 {
-    "New PML Function Definition": {
-        "prefix": "pmlfunc",
+    "New PML Object Definition": {
+        "prefix": "pmlobj",
         "body": [
             "--------------------------------------------------------------------------------------",
             "--",
@@ -17,14 +17,24 @@
             "--------------------------------------------------------------------------------------",
             "",
             "",
-            "define function !!${1:$TM_FILENAME_BASE}()",
+            "define object ${1:$TM_FILENAME_BASE}",
+            "",
+            "\tmember .${2:name} is ${3|Array,String,Real,DbRef,Boolean|}",
             "",
             "\t${0}",
             "",
-            "endfunction"
-
-
+            "endobject",
+            "",
+            "",
+            "--------------------------------------------------------------------------------------",
+            "--  Constructor Method                                                              --",
+            "--------------------------------------------------------------------------------------",
+            "define method .${1}()",
+            "",
+            "\t",
+            "",
+            "endmethod"
         ],
-        "description": "Base for a new PML Function"
+        "description": "Base for a new PML Object"
     }
 }

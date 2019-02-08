@@ -16,15 +16,16 @@ As of this release it has the following snippets defined:
 - `pmlform` : Creates the basic scaffolding for a new pml form.
 - `pmlformg`: Creates the basic scaffolding for a new pml form with a grid.
 - `pmlfunc` : Creates the basic scaffolding for a new pml function.
-- `pmlfmet` : Creates the basic scaffolding for a new pml method.
+- `pmlmet` : Creates the basic scaffolding for a new pml method.
+- `pmlobj` : Creates the basic scaffolding for a new pml object.
 
 ## Release Notes
 
 For a full list of changes please check `CHANGELOG.md`
 
-### 0.1.2
+### 0.1.3
 
-- Minor Changes
+- Added new snippet `pmlobj` : used to create the scaffolding for a new pml object
 
 ---
 

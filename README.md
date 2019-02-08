@@ -13,17 +13,19 @@ Then just type a snippet prefix, and press Tab to insert a snippet.
 
 As of this release it has the following snippets defined:
 
-- `pmlform`: Creates the basic scaffolding for a new pml form.
-- `pmlfunc`: Creates the basic scaffolding for a new pml function.
-- `pmlfmet`: Creates the basic scaffolding for a new pml method.
+- `pmlform` : Creates the basic scaffolding for a new pml form.
+- `pmlformg`: Creates the basic scaffolding for a new pml form with a grid.
+- `pmlfunc` : Creates the basic scaffolding for a new pml function.
+- `pmlfmet` : Creates the basic scaffolding for a new pml method.
 
 ## Release Notes
 
 For a full list of changes please check `CHANGELOG.md`
 
-### 0.1.0
+### 0.1.1
 
-Initial release of the `pml` VSCode extension
+- Added new snippet `pmlformg` : used to create a new pml form which uses a .NetControl Grid
+- Minor changes to syntax highlighter
 
 ---
 

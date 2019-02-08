@@ -1,6 +1,12 @@
 # Change Log
+
 All notable changes to the "pml" extension will be documented in this file.
+
+## [0.1.1]
+
+- Added new snippet `pmlformg` : used to create a new pml form which uses a .NetControl Grid
+- Minor changes to syntax highlighter
 
 ## [0.1.0]
 
-- Initial release
+- Initial release of the `pml` VSCode extension

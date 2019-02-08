@@ -10,7 +10,7 @@
             "--",
             "-- Other copyright Information goes here!",
             "--",
-            "-- Author: First Last",
+            "-- Author: <First Last>",
             "-- Date: \"$CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE\"",
             "-- Filename: \"$TM_FILENAME\"",
             "--",

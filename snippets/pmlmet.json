@@ -2,7 +2,7 @@
     "New PML Method Definition": {
         "prefix": "pmlmet",
         "body": [
-            "--------------------------MY NEW CUSTOM METHOD --------------------------------",
+            "---------------------------- MY NEW CUSTOM METHOD ----------------------------",
             "define method .${1}()",
             "",
             "\t${0}",

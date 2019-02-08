@@ -4,6 +4,13 @@
   "description": "PML Language Highlighter and Snippets",
   "version": "0.1.0",
   "publisher": "angelincalu",
+  "repository": {
+    "url": "https://github.com/x10sv/pml"
+  },
+  "homepage": "https://github.com/x10sv/pml",
+  "bugs": {
+    "url": "https://github.com/x10sv/pml/issues"
+  },
   "engines": {
     "vscode": "^1.30.0"
   },
@@ -34,7 +41,11 @@
     }],
     "snippets": [{
         "language": "pml",
-        "path": "./snippets/pmlfrm.json"
+        "path": "./snippets/pmlformg.json"
+      },
+      {
+        "language": "pml",
+        "path": "./snippets/pmlform.json"
       },
       {
         "language": "pml",
@@ -42,7 +53,7 @@
       },
       {
         "language": "pml",
-        "path": "./snippets/pmlfnc.json"
+        "path": "./snippets/pmlfunc.json"
       }
     ]
   }

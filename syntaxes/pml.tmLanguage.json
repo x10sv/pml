@@ -21,11 +21,11 @@
         },
         {
           "name": "keyword.control.pml",
-          "match": "\\b(if|else|elseif|endif|then|set|do|enddo|define|skip|return|any|is|object|true|false|values|indices|ind|var)\\b"
+          "match": "\\b(if|else|elseif|endif|then|set|do|enddo|define|skip|return|is|object|true|false|values|indices|ind|var|break)\\b"
         },
         {
           "name": "support.class.pml",
-          "match": "\\b(left|right|top|bottom|down|centre|path|width|height|container|dock|fill|member|dialog|resizable|size|none|all|xmin|xcen|xmax|ymin|ycen|ymax|anchor|volume|toggle|tooltip|pixmap|list|at|paragraph|text|button|callback)\\b"
+          "match": "(?i)\\b(left|right|top|bottom|down|centre|path|width|height|container|dock|fill|member|dialog|resizable|size|none|all|xmin|xcen|xmax|ymin|ycen|ymax|anchor|volume|toggle|tooltip|pixmap|list|at|paragraph|text|button|callback|nobox|indent)\\b"
         },
         {
           "name": "support.class.pml",
@@ -41,7 +41,7 @@
         },
         {
           "name": "storage.modifier.pml",
-          "match": "(?i)(?<!\\.)\\b[a-z\\d]+\\("
+          "match": "(?i)(?<!\\.)\b[a-z\\d]+(?=\\()"
         },
         {
           "name": "storage.modifier.pml",
@@ -49,7 +49,7 @@
         },
         {
           "name": "storage.modifier.pml",
-          "match": "\\b(array|string|real|bool|boolean|file|datetime|dbref)\\b"
+          "match": "(?i)\\b(array|string|real|bool|boolean|file|datetime|dbref|any|plane)\\b"
         },
         {
           "name": "variable.other.pml",

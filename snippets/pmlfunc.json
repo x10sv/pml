@@ -13,7 +13,7 @@
             "-- Author: First Last",
             "-- Date: \"$CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE\"",
             "-- Filename: \"$TM_FILENAME\"",
-            "",
+            "--",
             "-------------------------------------------------------------------------------",
             "",
             "",

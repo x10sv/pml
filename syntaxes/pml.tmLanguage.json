@@ -41,7 +41,7 @@
         },
         {
           "name": "storage.modifier.pml",
-          "match": "(?i)(?<!\\.)\b[a-z\\d]+(?=\\()"
+          "match": "(?i)(?<!\\.)\\b[a-z\\d]+(?=\\()"
         },
         {
           "name": "storage.modifier.pml",

@@ -11,7 +11,35 @@ const vscode = require('vscode');
 function activate(context) {
 
 
-    // register a command that updates the current cowsay
+    let allIds = {
+        "using namespace ": "",
+        "import ": "",
+        "handle ": "",
+        "handle any": "",
+        "endhandle": "",
+        "elsehandle ": "",
+        "object": "",
+        "before()": "",
+        "after()": ""
+    };
+
+    let completionProvider = vscode.languages.registerCompletionItemProvider({
+        language: "pml"
+    }, {
+        provideCompletionItems(document, position, token, context) {
+            let data = allIds;
+            let keys = Object.keys(data);
+            let items = [];
+            keys.forEach(key => {
+                let item = new vscode.CompletionItem(key, vscode.CompletionItemKind.Value);
+                items.push(item);
+            });
+
+            return items;
+        }
+    });
+
+    // register a new command
     context.subscriptions.push(
         vscode.commands.registerCommand("extension.pmlUglify", () => {
             if (!vscode.window.activeTextEditor) {
@@ -43,18 +71,16 @@ function activate(context) {
                 //then we perform some trimming
                 lineContent = lineContent.replace(/^[ ]+|[	]+$/g, '')
 
-
-                var regex = /\(?<!\!\)\![a-z0-9]+/gi;
+                var regex = /(?:^|[^!])!(\w+)/g;
                 var match;
                 var varString = "";
 
                 while (match = regex.exec(lineContent)) {
-                    if (match && match[0] != "!this") {
+                    if (match && match[1] != "!this") {
 
                         var newVar = "";
 
-                        varString = match[0];
-                        varString = varString.replace('!', '');
+                        varString = match[1];
 
                         if (!variables.hasOwnProperty(varString)) {
 
@@ -91,7 +117,7 @@ function activate(context) {
 
             }
 
-            console.log(variables);
+            //console.log(variables);
 
 
             var selection = new vscode.Selection(start, end);

@@ -33,13 +33,18 @@ As of this release it has the following snippets defined:
 
 - `PML Uglify` will encrypt the pml file using a trivial encryption (for testing purposes).
 
+## Code Completion
+
+- Basic code completion logic added
+
 ## Release Notes
 
 For a full list of changes please check `CHANGELOG.md`
 
-### 0.1.5
+### 0.1.6
 
-- Added basic functionality to "uglify" and encrypt PML files using the "trivial encryption" (for testing purposes).
+- Fixed problems in syntax highlighter
+- Added basic code completion logic
 
 ---
 

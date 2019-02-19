@@ -2,6 +2,11 @@
 
 All notable changes to the "pml" extension will be documented in this file.
 
+## [0.1.6]
+
+- Fixed problems in syntax highlighter
+- Added basic code completion logic
+
 ## [0.1.5]
 
 - Added basic functionality to "uglify" and encrypt PML files using the "trivial encryption" (for testing purposes).

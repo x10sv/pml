@@ -21,11 +21,19 @@
         },
         {
           "name": "keyword.control.pml",
-          "match": "\\b(if|else|elseif|endif|then|set|do|enddo|define|skip|return|is|object|endobject|true|false|values|indices|ind|var|val|evar|break|before|after|reorder|label)\\b"
+          "match": "\\b(if|else|elseif|endif|then|set|do|from|to|enddo|skip|return|is|object|endobject|values|indices|ind|var|val|evar|break|before|after|reorder|label|mode)\\b"
+        },
+        {
+          "name": "keyword.control.pml",
+          "match": "\\b(define|function|endfunction|method|endmethod|prev|next|of)\\b"
+        },
+        {
+          "name": "keyword.control.pml",
+          "match": "(?i)\\b(true|false)\\b"
         },
         {
           "name": "support.class.pml",
-          "match": "(?i)\\b(left|right|top|bottom|down|centre|path|width|height|container|dock|docking|fill|tabset|member|dialog|resizable|size|varchars|none|all|xmin|xcen|xmax|ymin|ycen|ymax|anchor|volume|toggle|tooltip|pixmap|list|at|paragraph|text|button|callback|nobox|indent)\\b"
+          "match": "(?i)\\b(left|right|top|bottom|down|centre|format|panel|path|width|height|container|dock|docking|fill|tabset|member|dialog|resizable|size|varchars|none|all|xmin|xcen|xmax|ymin|ycen|ymax|anchor|volume|toggle|tooltip|pixmap|list|at|paragraph|line|lines|option|combobox|line|linklabel|horizontal|text|button|callback|nobox|indent)\\b"
         },
         {
           "name": "support.class.pml",
@@ -37,7 +45,7 @@
         },
         {
           "name": "storage.modifier.pml",
-          "match": "\\b(using|namespace|function|endfunction|method|endmethod|handle|elsehandle|endhandle|onerror|golabel|exit|frame|view|setup|import|form)\\b"
+          "match": "\\b(using|namespace|handle|elsehandle|endhandle|onerror|golabel|exit|frame|view|setup|import|form)\\b"
         },
         {
           "name": "storage.modifier.pml",
@@ -54,6 +62,10 @@
         {
           "name": "variable.other.pml",
           "match": "(?i)\\![a-z0-9]+"
+        },
+        {
+          "name": "variable.other.pml",
+          "match": "(?i)\\!\\<[a-z0-9]*\\>"
         },
         {
           "name": "entity.name.function.pml",
@@ -87,7 +99,7 @@
         },
         {
           "name": "string.quoted.pml",
-          "match": "(?i)^\\h*\\K\\$P.*"
+          "match": "\\$P.*"
         }
       ]
     },

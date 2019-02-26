@@ -41,9 +41,9 @@ As of this release it has the following snippets defined:
 
 For a full list of changes please check `CHANGELOG.md`
 
-### 0.1.7
+### 0.1.8
 
-- Minor changes
+- Updated comments in snippets
 
 ---
 

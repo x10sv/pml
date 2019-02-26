@@ -39,6 +39,7 @@
       "--|  Description : This is the construct method",
       "--|  Arguments   : None",
       "--|  Return      : Void",
+      "--|",
       "--|------------------------------------------------------------------------------------------------",
       "",
       "define method .${1}()",

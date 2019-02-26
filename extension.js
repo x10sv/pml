@@ -11,26 +11,21 @@ const vscode = require('vscode');
 function activate(context) {
 
 
-    let allIds = {
-        "using namespace ": "",
-        "import ": "",
-        "handle ": "",
-        "handle any": "",
-        "endhandle": "",
-        "elsehandle ": "",
-        "object": "",
-        "before()": "",
-        "after()": ""
-    };
+    let allItems = [
+        "import ",
+        "handle ",
+        "handle any",
+        "endhandle",
+        "elsehandle ",
+        "object ",
+        "before()",
+        "after()"
+    ];
 
-    let completionProvider = vscode.languages.registerCompletionItemProvider({
-        language: "pml"
-    }, {
+    const disposable = vscode.languages.registerCompletionItemProvider('pml', {
         provideCompletionItems(document, position, token, context) {
-            let data = allIds;
-            let keys = Object.keys(data);
             let items = [];
-            keys.forEach(key => {
+            allItems.forEach(key => {
                 let item = new vscode.CompletionItem(key, vscode.CompletionItemKind.Value);
                 items.push(item);
             });

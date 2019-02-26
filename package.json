@@ -2,7 +2,7 @@
   "name": "pml",
   "displayName": "PML",
   "description": "PML Language Highlighter and Snippets",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "publisher": "angelincalu",
   "repository": {
     "url": "https://github.com/x10sv/pml"
@@ -70,6 +70,10 @@
       {
         "language": "pml",
         "path": "./snippets/pmlbut.json"
+      },
+      {
+        "language": "pml",
+        "path": "./snippets/helpers.json"
       }
     ],
     "commands": [{

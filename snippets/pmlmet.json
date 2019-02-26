@@ -10,7 +10,7 @@
             "",
             "\t${0}",
             "",
-            "endfunction"
+            "endmethod"
 
 
         ],

@@ -33,7 +33,7 @@
         },
         {
           "name": "support.class.pml",
-          "match": "(?i)\\b(left|right|top|bottom|down|centre|format|panel|path|width|height|container|dock|docking|fill|tabset|member|dialog|resizable|size|varchars|none|all|xmin|xcen|xmax|ymin|ycen|ymax|anchor|volume|toggle|tooltip|pixmap|list|at|paragraph|line|lines|option|combobox|line|linklabel|horizontal|text|button|callback|nobox|indent)\\b"
+          "match": "(?i)\\b(left|right|top|bottom|down|centre|format|panel|path|width|height|scroll|container|dock|docking|fill|tabset|member|dialog|resizable|size|varchars|none|all|xmin|xcen|xmax|ymin|ycen|ymax|anchor|volume|toggle|tooltip|pixmap|list|at|paragraph|line|lines|option|combobox|line|linklabel|horizontal|text|textpane|button|callback|nobox|indent)\\b"
         },
         {
           "name": "support.class.pml",

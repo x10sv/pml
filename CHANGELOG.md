@@ -2,6 +2,10 @@
 
 All notable changes to the "pml" extension will be documented in this file.
 
+## [0.1.7]
+
+- Minor changes
+
 ## [0.1.6]
 
 - Fixed problems in syntax highlighter

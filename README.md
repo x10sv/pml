@@ -41,10 +41,9 @@ As of this release it has the following snippets defined:
 
 For a full list of changes please check `CHANGELOG.md`
 
-### 0.1.6
+### 0.1.7
 
-- Fixed problems in syntax highlighter
-- Added basic code completion logic
+- Minor changes
 
 ---
 

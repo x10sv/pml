@@ -112,7 +112,7 @@ function activate(context) {
                 // Mess up the cases
                 // TO DO: mess up with the cases outside quoted text (now the whole line is excluded based on some basic logic)
                 if (lineContent.indexOf("'") == -1 && lineContent.indexOf("|") == -1 && lineContent.indexOf('"') == -1 && lineContent.indexOf("$P") == -1 && lineContent.indexOf("$p") == -1 && lineContent.indexOf("CE") == -1) {
-                    lineContent = randomizeCase(lineContent);
+                    lineContent = randomizeCase(lineContent)
                 }
 
 
@@ -159,10 +159,10 @@ module.exports = {
 
 
 function randomizeCase(Str) {
-    Str = Str.split('').map(function (v) {
+    var Randomized = Str.split('').map(function (v) {
         var chance = Math.round(Math.random());
         return v = chance ? v.toUpperCase() : v.toLowerCase();
     }).join('');
 
-    return Str;
+    return Randomized;
 }

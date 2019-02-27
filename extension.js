@@ -19,7 +19,8 @@ function activate(context) {
         "elsehandle ",
         "object ",
         "before()",
-        "after()"
+        "after()",
+        "append()"
     ];
 
     const disposable = vscode.languages.registerCompletionItemProvider('pml', {

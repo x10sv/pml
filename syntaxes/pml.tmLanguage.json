@@ -21,7 +21,7 @@
         },
         {
           "name": "keyword.control.pml",
-          "match": "\\b(if|else|elseif|endif|then|set|do|from|to|enddo|skip|return|is|object|endobject|values|indices|ind|index|var|val|evar|break|before|after|reorder|label|mode)\\b"
+          "match": "\\b(if|else|elseif|endif|then|set|do|from|to|enddo|skip|return|is|object|endobject|value|values|indices|ind|index|var|val|evar|break|before|after|reorder|label|mode)\\b"
         },
         {
           "name": "keyword.control.pml",
@@ -33,7 +33,7 @@
         },
         {
           "name": "support.class.pml",
-          "match": "(?i)\\b(left|right|top|bottom|down|centre|format|panel|path|width|height|scroll|container|dock|docking|fill|tabset|member|dialog|resizable|size|varchars|none|all|xmin|xcen|xmax|ymin|ycen|ymax|anchor|volume|toggle|tooltip|pixmap|list|at|paragraph|line|lines|option|combobox|line|linklabel|horizontal|text|textpane|button|callback|nobox|indent)\\b"
+          "match": "(?i)\\b(left|right|top|bottom|down|centre|format|panel|path|width|tagwidth|height|scroll|container|dock|docking|fill|tabset|member|dialog|resizable|resize|size|varchars|none|all|xmin|xcen|xmax|ymin|ycen|ymax|anchor|volume|toggle|rtoggle|tooltip|pixmap|list|at|paragraph|line|horiz|lines|option|combobox|line|linklabel|vertical|horizontal|text|textpane|button|call|callback|nobox|indent)\\b"
         },
         {
           "name": "support.class.pml",
@@ -53,11 +53,11 @@
         },
         {
           "name": "storage.modifier.pml",
-          "match": "(?i)\\b(pml|show|load|reload|loadform|hide|kill|free|refresh)\\b"
+          "match": "(?i)\\b(pml|show|load|reload|loadform|hide|kill|free|refresh|prompt|on|off|syscom)\\b"
         },
         {
           "name": "storage.modifier.pml",
-          "match": "(?i)\\b(array|string|real|bool|boolean|file|datetime|dbref|any|plane)\\b"
+          "match": "(?i)\\b(array|string|real|bool|boolean|file|datetime|dbref|any|plane|gadget|error|MarElementHandle)\\b"
         },
         {
           "name": "variable.other.pml",

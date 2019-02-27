@@ -47,10 +47,9 @@ Less significant snippets like:
 
 For a full list of changes please check `CHANGELOG.md`
 
-### 0.1.8
+### 0.1.9
 
-- Updated comments in snippets
-- Fixed `Uglifier` to skip the `!this` variable
+- Quick fix (semicolon removed)
 
 ---
 

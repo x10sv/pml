@@ -2,6 +2,10 @@
 
 All notable changes to the "pml" extension will be documented in this file.
 
+## [0.1.9]
+
+- Quick fix (semicolon removed)
+
 ## [0.1.8]
 
 - Updated comments in snippets

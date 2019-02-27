@@ -5,6 +5,7 @@ All notable changes to the "pml" extension will be documented in this file.
 ## [0.1.8]
 
 - Updated comments in snippets
+- Fixed `Uglifier` to skip the `!this` variable
 
 ## [0.1.7]
 

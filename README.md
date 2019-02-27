@@ -1,5 +1,7 @@
 # PML Extension for `Visual Studio Code`
 
+Link in marketplace: https://marketplace.visualstudio.com/items?itemName=angelincalu.pml
+
 ## Features
 
 It provides syntax highlight for `Programmable Macro Language`.
@@ -27,7 +29,11 @@ As of this release it has the following snippets defined:
 - **`pmlfunc`** : Creates the basic scaffolding for a new pml function.
 - **`pmlmet`** : Creates the basic scaffolding for a new pml method.
 - **`pmlobj`** : Creates the basic scaffolding for a new pml object.
+
+Less significant snippets like:
+
 - **`pmlbut`** : Creates the basic code for adding a new button on a plm form.
+- **`using namespace`** : Suggests the most commonly used namespaces
 
 ## Commands
 
@@ -44,6 +50,7 @@ For a full list of changes please check `CHANGELOG.md`
 ### 0.1.8
 
 - Updated comments in snippets
+- Fixed `Uglifier` to skip the `!this` variable
 
 ---
 

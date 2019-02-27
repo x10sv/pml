@@ -66,12 +66,16 @@ function activate(context) {
                 //then we perform some trimming
                 lineContent = lineContent.replace(/^[ ]+|[	]+$/g, '')
 
+
+                //replace consecutive spaces with only one space
+                lineContent = lineContent.replace(/[ ]{2,}/g, '')
+
                 var regex = /(?:^|[^!])!(\w+)/g;
                 var match;
                 var varString = "";
 
                 while (match = regex.exec(lineContent)) {
-                    if (match && match[1] != "!this") {
+                    if (match && match[1] != "this") {
 
                         var newVar = "";
 
@@ -102,6 +106,13 @@ function activate(context) {
 
 
                     }
+                }
+
+
+                // Mess up the cases
+                // TO DO: mess up with the cases outside quoted text (now the whole line is excluded based on some basic logic)
+                if (lineContent.indexOf("'") == -1 && lineContent.indexOf("|") == -1 && lineContent.indexOf('"') == -1 && lineContent.indexOf("$P") == -1 && lineContent.indexOf("$p") == -1 && lineContent.indexOf("CE") == -1) {
+                    lineContent = randomizeCase(lineContent);
                 }
 
 
@@ -142,4 +153,16 @@ function deactivate() {}
 module.exports = {
     activate,
     deactivate
+}
+
+
+
+
+function randomizeCase(Str) {
+    Str = Str.split('').map(function (v) {
+        var chance = Math.round(Math.random());
+        return v = chance ? v.toUpperCase() : v.toLowerCase();
+    }).join('');
+
+    return Str;
 }

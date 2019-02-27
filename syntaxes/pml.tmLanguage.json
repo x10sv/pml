@@ -21,7 +21,7 @@
         },
         {
           "name": "keyword.control.pml",
-          "match": "\\b(if|else|elseif|endif|then|set|do|from|to|enddo|skip|return|is|object|endobject|values|indices|ind|var|val|evar|break|before|after|reorder|label|mode)\\b"
+          "match": "\\b(if|else|elseif|endif|then|set|do|from|to|enddo|skip|return|is|object|endobject|values|indices|ind|index|var|val|evar|break|before|after|reorder|label|mode)\\b"
         },
         {
           "name": "keyword.control.pml",

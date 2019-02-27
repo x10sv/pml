@@ -103,7 +103,7 @@ function activate(context) {
                             newVar = variables[varString];
                         }
 
-                        lineContent = lineContent.replace(varString, newVar);
+                        lineContent = lineContent.replace("!" + varString, "!" + newVar);
 
 
                     }

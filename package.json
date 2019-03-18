@@ -2,7 +2,7 @@
   "name": "pml",
   "displayName": "PML",
   "description": "PML Language Highlighter and Snippets",
-  "version": "0.1.9",
+  "version": "0.1.10",
   "publisher": "angelincalu",
   "repository": {
     "url": "https://github.com/x10sv/pml"
@@ -37,7 +37,8 @@
         ".pmlmac",
         ".pmlfnc",
         ".pmlobj",
-        ".pmldat"
+        ".pmldat",
+        ".pmlcmd"
       ],
       "configuration": "./language-configuration.json"
     }],

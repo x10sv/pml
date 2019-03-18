@@ -21,23 +21,27 @@
         },
         {
           "name": "keyword.control.pml",
-          "match": "\\b(if|else|elseif|endif|then|set|do|from|to|enddo|skip|return|is|object|endobject|value|values|indices|ind|index|var|val|evar|break|before|after|reorder|label|mode)\\b"
+          "match": "\\b(if|else|elseif|endif|then|set|unset|do|from|to|enddo|skip|return|is|object|endobject|value|values|indices|ind|index|val|evar|exist|exists|break|before|after|reorder|label|mode)\\b"
         },
         {
           "name": "keyword.control.pml",
-          "match": "\\b(define|function|endfunction|method|endmethod|prev|next|of)\\b"
+          "match": "(?i)\\b(define|function|endfunction|method|endmethod|prev|next|of)\\b"
         },
         {
           "name": "keyword.control.pml",
           "match": "(?i)\\b(true|false)\\b"
         },
         {
-          "name": "support.class.pml",
-          "match": "(?i)\\b(left|right|top|bottom|down|centre|format|panel|path|width|tagwidth|height|scroll|container|dock|docking|fill|tabset|member|dialog|resizable|resize|size|varchars|none|all|xmin|xcen|xmax|ymin|ycen|ymax|anchor|volume|toggle|rtoggle|tooltip|pixmap|list|at|paragraph|line|horiz|lines|option|combobox|line|linklabel|vertical|horizontal|text|textpane|button|call|callback|nobox|indent)\\b"
+          "name": "keyword.control.pml",
+          "match": "(?i)\\b(var|switch|split|savework|getwork|unclaim|unclaim all|delete|session|current project|edit|put|compose)\\b"
         },
         {
           "name": "support.class.pml",
-          "match": "(?i)\\b(FoldUpPanel|Single|align|noalign)\\b"
+          "match": "(?i)\\b(left|right|top|bottom|down|centre|format|panel|path|width|tag|select|tagwidth|height|hei|name|scroll|container|columns|dock|docking|separator|fill|tabset|member|dialog|resizable|blocking|resize|size|varchars|none|all|xmin|xcen|xmax|ymin|ycen|ymax|anchor|volume|toggle|states|rtoggle|tooltip|pixmap|rgroup|list|multiple|pairs|at|area|aspect|setcolour|cursor|nocursor|borders|para|paragraph|line|horiz|lines|option|combobox|line|linklabel|vertical|horizontal|hdist|vdist|text|bar|menu|popup|add|noecho|title|icontitle|iconti|textpane|button|call|callback|init|track|cancelcall|cancel|apply|ok|nobox|indent)\\b"
+        },
+        {
+          "name": "support.class.pml",
+          "match": "(?i)\\b(FoldUpPanel|single|align|noalign)\\b"
         },
         {
           "name": "storage.modifier.pml",
@@ -45,7 +49,7 @@
         },
         {
           "name": "storage.modifier.pml",
-          "match": "\\b(using|namespace|handle|elsehandle|endhandle|onerror|golabel|exit|frame|view|setup|import|form)\\b"
+          "match": "\\b(using|namespace|handle|elsehandle|endhandle|onerror|continue|golabel|exit|frame|view|setup|import|form)\\b"
         },
         {
           "name": "storage.modifier.pml",
@@ -53,11 +57,11 @@
         },
         {
           "name": "storage.modifier.pml",
-          "match": "(?i)\\b(pml|show|load|reload|loadform|hide|kill|free|refresh|prompt|on|off|syscom)\\b"
+          "match": "(?i)\\b(pml|show|load|reload|loadform|cen|centred|hide|kill|free|refresh|prompt|on|off|syscom)\\b"
         },
         {
           "name": "storage.modifier.pml",
-          "match": "(?i)\\b(array|string|real|bool|boolean|file|datetime|dbref|any|plane|gadget|error|MarElementHandle)\\b"
+          "match": "(?i)\\b(array|string|real|bool|boolean|file|datetime|dbref|any|plane|gadget|error|MarElementHandle|empty)\\b"
         },
         {
           "name": "variable.other.pml",

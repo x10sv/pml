@@ -6,7 +6,7 @@ Link in marketplace: https://marketplace.visualstudio.com/items?itemName=angelin
 
 It provides syntax highlight for `Programmable Macro Language`.
 
-> Supported File Types: `.pmlfrm`, `.pmlmac`, `.pmlfnc`, `.pmlobj`, `.pmldat`
+> Supported File Types: `.pmlfrm`, `.pmlmac`, `.pmlfnc`, `.pmlobj`, `.pmldat`, `.pmlcmd`
 
 ## Snippets
 
@@ -47,9 +47,10 @@ Less significant snippets like:
 
 For a full list of changes please check `CHANGELOG.md`
 
-### 0.1.9
+### 0.1.10
 
-- Quick fix (semicolon removed)
+- Extended support for `.pmlcmd` files.
+- Minor syntax highlight adjustments.
 
 ---
 

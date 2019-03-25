@@ -5,5 +5,12 @@
             "using namespace '${1|Aveva.Pdms.PMLNet,Aveva.Pdms.Presentation,Aveva.Pdms.Presentation.MyDataAddin,Aveva.Pdms.Presentation.PDMSCommands,Aveva.Marine.DataExtraction,Aveva.Marine.Design,AVEVA.Marine.Drafting,Aveva.Marine.Drafting.MarInterpretationObject,Aveva.Marine.Geometry,Aveva.Pdms.Shared,Aveva.Marine.UI,Aveva.Marine.Utility|}'"
         ],
         "description": "Helper for using namespace"
+    },
+    "!!alert": {
+        "prefix": "!!alert",
+        "body": [
+            "!!alert.${1|message,warning,error,confirm,question,input|}(${2})"
+        ],
+        "description": "Helper for !!alert global function"
     }
 }

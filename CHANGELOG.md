@@ -2,6 +2,10 @@
 
 All notable changes to the "pml" extension will be documented in this file.
 
+## [0.1.11]
+
+- Syntax highlight updates.
+
 ## [0.1.10]
 
 - Extended support for `.pmlcmd` files.

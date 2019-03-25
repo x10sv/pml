@@ -39,6 +39,8 @@ Less significant snippets like:
 
 - `PML Uglify` will encrypt the pml file using a trivial encryption (for testing purposes).
 
+**`Important Known issue:`** This "encryption" type does not support utf-8 files. If you use any non-ASCII characters in the script this will result in an error and/or will produce unwanted/unpredictable results!
+
 ## Code Completion
 
 - Basic code completion logic added

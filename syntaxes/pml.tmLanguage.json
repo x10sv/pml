@@ -78,10 +78,6 @@
         {
           "name": "constant.numeric.decimal.pml",
           "match": "\\b[0-9]+\\b"
-        },
-        {
-          "name": "string.quoted.pml",
-          "match": "\\$"
         }
       ]
     },
@@ -116,6 +112,10 @@
         {
           "name": "comment.line.double-slash.pml",
           "match": "(?x)\\--.*"
+        },
+        {
+          "name": "comment.line.double-slash.pml",
+          "match": "(?x)\\$\\*.*"
         }
       ]
     }

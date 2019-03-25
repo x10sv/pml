@@ -49,10 +49,10 @@ Less significant snippets like:
 
 For a full list of changes please check `CHANGELOG.md`
 
-### 0.1.10
+### 0.1.11
 
-- Extended support for `.pmlcmd` files.
-- Minor syntax highlight adjustments.
+- Syntax highlight updates.
+- `!!alert` Snippet added
 
 ---
 

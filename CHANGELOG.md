@@ -5,6 +5,7 @@ All notable changes to the "pml" extension will be documented in this file.
 ## [0.1.11]
 
 - Syntax highlight updates.
+- `!!alert` Snippet added
 
 ## [0.1.10]
 

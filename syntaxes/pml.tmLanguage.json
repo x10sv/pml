@@ -3,7 +3,8 @@
   "scopeName": "source.pml",
   "name": "Programmable Macro Language",
   "fileTypes": [".pmlfrm", ".pmlmac", ".pmlfnc", ".pmlobj", ".pmldat"],
-  "patterns": [{
+  "patterns": [
+    {
       "include": "#keywords"
     },
     {
@@ -15,7 +16,8 @@
   ],
   "repository": {
     "keywords": {
-      "patterns": [{
+      "patterns": [
+        {
           "name": "entity.name.function.pml",
           "match": "(?i)\\.[a-z0-9]+"
         },
@@ -37,11 +39,11 @@
         },
         {
           "name": "support.class.pml",
-          "match": "(?i)\\b(left|right|top|bottom|down|centre|format|panel|path|width|tag|select|tagwidth|height|hei|name|scroll|container|columns|dock|docking|separator|fill|tabset|member|dialog|resizable|blocking|resize|size|varchars|none|all|xmin|xcen|xmax|ymin|ycen|ymax|anchor|volume|toggle|states|rtoggle|tooltip|pixmap|rgroup|list|multiple|pairs|at|area|aspect|setcolour|cursor|nocursor|borders|para|paragraph|line|horiz|lines|option|combobox|line|linklabel|vertical|horizontal|hdist|vdist|text|bar|menu|popup|add|noecho|title|icontitle|iconti|textpane|button|call|callback|init|track|cancelcall|cancel|apply|ok|nobox|indent)\\b"
+          "match": "(?i)\\b(left|right|top|bottom|down|centre|format|panel|path|width|wid|tag|select|tagwidth|height|hei|name|scroll|container|columns|dock|docking|separator|fill|tabset|member|dialog|resizable|blocking|resize|size|varchars|none|all|xmin|xcen|xmax|ymin|ycen|ymax|anchor|volume|toggle|states|rtoggle|tooltip|pixmap|rgroup|list|multiple|pairs|at|area|aspect|setcolour|cursor|nocursor|borders|para|paragraph|line|horiz|lines|option|combobox|line|linklabel|vertical|horizontal|hdist|vdist|text|bar|menu|popup|add|noecho|title|icontitle|iconti|textpane|button|call|callback|init|track|cancelcall|cancel|apply|ok|nobox|indent)\\b"
         },
         {
           "name": "support.class.pml",
-          "match": "(?i)\\b(FoldUpPanel|single|align|noalign)\\b"
+          "match": "(?i)\\b(FoldUpPanel|single|align|noalign|valign|halign)\\b"
         },
         {
           "name": "storage.modifier.pml",
@@ -78,15 +80,12 @@
         {
           "name": "constant.numeric.decimal.pml",
           "match": "\\b[0-9]+\\b"
-        },
-        {
-          "name": "string.quoted.pml",
-          "match": "\\$"
         }
       ]
     },
     "strings": {
-      "patterns": [{
+      "patterns": [
+        {
           "name": "string.quoted.pml",
           "begin": "'",
           "end": "'"
@@ -108,7 +107,8 @@
       ]
     },
     "comments": {
-      "patterns": [{
+      "patterns": [
+        {
           "name": "comment.line.double-slash.pml",
           "begin": "\\$\\(",
           "end": "\\$\\)"

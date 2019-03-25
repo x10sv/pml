@@ -116,6 +116,10 @@
         {
           "name": "comment.line.double-slash.pml",
           "match": "(?x)\\--.*"
+        },
+        {
+          "name": "comment.line.double-slash.pml",
+          "match": "(?x)\\$\\*.*"
         }
       ]
     }

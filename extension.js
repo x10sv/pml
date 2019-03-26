@@ -60,6 +60,9 @@ function activate(context) {
                 //first we remove the commented lines
                 lineContent = lineContent.replace(/[\s+]?--.*/g, '')
 
+                // and the inline comments
+                lineContent = lineContent.replace(/\$\*.*/g, '')
+
                 //then we remove the comented blocks
                 // Those start with "($""  and end with "$)"
                 // I should mark the start and end of those and cut them off the result

@@ -2,6 +2,10 @@
 
 All notable changes to the "pml" extension will be documented in this file.
 
+## [0.1.12]
+
+- Updated vscode requirement to `"vscode": "^1.21.1"`
+
 ## [0.1.11]
 
 - Syntax highlight updates.

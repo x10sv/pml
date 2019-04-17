@@ -2,6 +2,10 @@
 
 Link in marketplace: https://marketplace.visualstudio.com/items?itemName=angelincalu.pml
 
+## Requirements
+
+> Visual studio Code with a version greater than `"^1.21.1"`
+
 ## Features
 
 It provides syntax highlight for `Programmable Macro Language`.
@@ -49,10 +53,9 @@ Less significant snippets like:
 
 For a full list of changes please check `CHANGELOG.md`
 
-### 0.1.11
+### 0.1.12
 
-- Syntax highlight updates.
-- `!!alert` Snippet added
+- Updated vscode requirement to `"vscode": "^1.21.1"`
 
 ---
 

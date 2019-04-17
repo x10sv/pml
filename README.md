@@ -1,8 +1,8 @@
 # PML Extension for `Visual Studio Code`
 
-<p><img src="https://vsmarketplacebadge.apphb.com/version/angelincalu.pml.svg?sanitize=true"></p>
-
-Link in marketplace: https://marketplace.visualstudio.com/items?itemName=angelincalu.pml
+[<img src="https://vsmarketplacebadge.apphb.com/version/angelincalu.pml.svg?sanitize=true">](https://marketplace.visualstudio.com/items?itemName=angelincalu.pml)
+[<img src="https://vsmarketplacebadge.apphb.com/installs/angelincalu.pml.svg?sanitize=true">](https://marketplace.visualstudio.com/items?itemName=angelincalu.pml)
+[<img src="https://vsmarketplacebadge.apphb.com/downloads/angelincalu.pml.svg?sanitize=true">](https://marketplace.visualstudio.com/items?itemName=angelincalu.pml)
 
 ## Requirements
 

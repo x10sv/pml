@@ -65,3 +65,7 @@ For a full list of changes please check `CHANGELOG.md`
 - [Visual Studio Code](https://code.visualstudio.com/)
 
 **All contributions are welcomed!**
+
+### TO DO:
+
+- Check backward compatibility and update minimum requirements.

@@ -55,9 +55,9 @@ Less significant snippets like:
 
 For a full list of changes please check `CHANGELOG.md`
 
-### 0.1.12
+### 0.1.13
 
-- Updated vscode requirement to `"vscode": "^1.21.1"`
+- Updated dependency requirement for `tar` to `">=4.4.2"` in order to fix potential security issue described [here](https://nvd.nist.gov/vuln/detail/CVE-2018-20834).
 
 ---
 

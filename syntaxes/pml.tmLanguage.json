@@ -2,8 +2,15 @@
   "$schema": "https://raw.githubusercontent.com/martinring/tmlanguage/master/tmlanguage.json",
   "scopeName": "source.pml",
   "name": "Programmable Macro Language",
-  "fileTypes": [".pmlfrm", ".pmlmac", ".pmlfnc", ".pmlobj", ".pmldat"],
-  "patterns": [{
+  "fileTypes": [
+    ".pmlfrm",
+    ".pmlmac",
+    ".pmlfnc",
+    ".pmlobj",
+    ".pmldat"
+  ],
+  "patterns": [
+    {
       "include": "#keywords"
     },
     {
@@ -15,7 +22,8 @@
   ],
   "repository": {
     "keywords": {
-      "patterns": [{
+      "patterns": [
+        {
           "name": "entity.name.function.pml",
           "match": "(?i)\\.[a-z0-9]+"
         },
@@ -33,11 +41,11 @@
         },
         {
           "name": "keyword.control.pml",
-          "match": "(?i)\\b(var|switch|split|savework|getwork|unclaim|unclaim all|delete|session|current project|edit|put|compose)\\b"
+          "match": "(?i)\\b(var|switch|split|savework|getwork|unclaim|unclaim all|delete|session|current|project|edit|put|compose)\\b"
         },
         {
           "name": "support.class.pml",
-          "match": "(?i)\\b(left|right|top|bottom|down|centre|format|panel|path|width|wid|tag|select|tagwid|tagwidth|height|hei|name|scroll|container|columns|dock|docking|separator|fill|tabset|member|dialog|resizable|blocking|resize|size|varchars|none|all|xmin|xcen|xmax|ymin|ycen|ymax|anchor|volume|toggle|states|rtoggle|tooltip|pixmap|rgroup|list|multiple|pairs|at|area|aspect|setcolour|curs|cursor|nocursor|borders|para|paragraph|line|horiz|lines|option|combo|combobox|line|linklabel|vertical|horizontal|hdist|vdist|text|bar|menu|popup|add|noecho|title|icontitle|iconti|slider|range|textpane|button|call|callback|init|track|cancelcall|cancel|apply|ok|nobox|indent)\\b"
+          "match": "(?i)\\b(left|right|top|bottom|down|centre|format|panel|path|width|wid|length|tag|select|tagwid|tagwidth|height|hei|name|scroll|container|columns|dock|docking|separator|fill|tabset|member|dialog|resizable|blocking|resize|size|varchars|none|all|max|xmin|xcen|xmax|ymin|ycen|ymax|anchor|volume|toggle|states|rtoggle|tooltip|toolbar|pixmap|rgroup|list|multi|multiple|pairs|at|area|aspect|setcolour|curs|cursor|nocursor|borders|para|paragraph|line|horiz|lines|option|combo|combobox|line|linklabel|vertical|horizontal|hdist|hdistance|vdist|vdistance|text|bar|menu|popup|add|noecho|title|icontitle|iconti|slider|range|textpane|button|call|callback|init|track|cancelcall|cancel|apply|ok|numeric|step|ndp|nobox|indent)\\b"
         },
         {
           "name": "support.class.pml",
@@ -53,7 +61,7 @@
         },
         {
           "name": "storage.modifier.pml",
-          "match": "\\b(using|namespace|handle|elsehandle|endhandle|onerror|continue|golabel|exit|frame|view|setup|import|form)\\b"
+          "match": "\\b(using|namespace|handle|elsehandle|endhandle|onerror|continue|golabel|exit|frame|view|setup|layout|import|form|undodb|world)\\b"
         },
         {
           "name": "storage.modifier.pml",
@@ -65,7 +73,7 @@
         },
         {
           "name": "storage.modifier.pml",
-          "match": "(?i)\\b(array|string|real|bool|boolean|file|datetime|dbref|any|plane|gadget|error|MarElementHandle|empty)\\b"
+          "match": "(?i)\\b(array|string|direction|undoable|real|bool|boolean|file|datetime|dbref|any|plane|gadget|error|noalert|MarElementHandle|NetGridControl|empty)\\b"
         },
         {
           "name": "variable.other.pml",
@@ -86,7 +94,8 @@
       ]
     },
     "strings": {
-      "patterns": [{
+      "patterns": [
+        {
           "name": "string.quoted.pml",
           "begin": "'",
           "end": "'"
@@ -108,7 +117,8 @@
       ]
     },
     "comments": {
-      "patterns": [{
+      "patterns": [
+        {
           "name": "comment.line.double-slash.pml",
           "begin": "\\$\\(",
           "end": "\\$\\)"

@@ -12,7 +12,7 @@
 
 It provides syntax highlight for `Programmable Macro Language`.
 
-> Supported File Types: `.pmlfrm`, `.pmlmac`, `.pmlfnc`, `.pmlobj`, `.pmldat`, `.pmlcmd`
+> Supported File Types: `.pmlfrm`, `.pmlmac`, `.pmlfnc`, `.pmlobj`, `.pmldat`, `.pmlcmd` and `.mac`
 
 ## Snippets
 
@@ -55,12 +55,10 @@ Less significant snippets like:
 
 For a full list of changes please check `CHANGELOG.md`
 
-### 0.1.13
+### 0.1.14
 
-- Updated dependency requirement for `tar` to `">=4.4.2"` in order to fix potential security issue described [here](https://nvd.nist.gov/vuln/detail/CVE-2018-20834).
-- Updated dependency requirement for `lodash` to `4.17.14` from to `4.17.11` to address a potential security issue.
-- Updated dependency requirement for `diff` to `"3.5.0"` in order to fix potential security issue.
-- Updated dependency requirement for `querystringify` to `"2.1.1"` in order to fix potential security issue.
+- Extended support for `.mac` file extension.
+- Minor changes to syntax highlighting.
 
 ---
 

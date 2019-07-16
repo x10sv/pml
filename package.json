@@ -2,7 +2,7 @@
   "name": "pml",
   "displayName": "PML",
   "description": "PML Language Highlighter and Snippets",
-  "version": "0.1.13",
+  "version": "0.1.14",
   "publisher": "angelincalu",
   "repository": {
     "url": "https://github.com/x10sv/pml"
@@ -26,33 +26,29 @@
   ],
   "main": "./extension.js",
   "contributes": {
-    "languages": [
-      {
-        "id": "pml",
-        "aliases": [
-          "Programmable Macro Language",
-          "pml"
-        ],
-        "extensions": [
-          ".pmlfrm",
-          ".pmlmac",
-          ".pmlfnc",
-          ".pmlobj",
-          ".pmldat",
-          ".pmlcmd"
-        ],
-        "configuration": "./language-configuration.json"
-      }
-    ],
-    "grammars": [
-      {
-        "language": "pml",
-        "scopeName": "source.pml",
-        "path": "./syntaxes/pml.tmLanguage.json"
-      }
-    ],
-    "snippets": [
-      {
+    "languages": [{
+      "id": "pml",
+      "aliases": [
+        "Programmable Macro Language",
+        "pml"
+      ],
+      "extensions": [
+        ".pmlfrm",
+        ".pmlmac",
+        ".pmlfnc",
+        ".pmlobj",
+        ".pmldat",
+        ".pmlcmd",
+        ".mac"
+      ],
+      "configuration": "./language-configuration.json"
+    }],
+    "grammars": [{
+      "language": "pml",
+      "scopeName": "source.pml",
+      "path": "./syntaxes/pml.tmLanguage.json"
+    }],
+    "snippets": [{
         "language": "pml",
         "path": "./snippets/pmlformg.json"
       },
@@ -81,17 +77,13 @@
         "path": "./snippets/helpers.json"
       }
     ],
-    "commands": [
-      {
-        "command": "extension.pmlUglify",
-        "title": "PML Uglify"
-      }
-    ],
-    "breakpoints": [
-      {
-        "language": "pml"
-      }
-    ]
+    "commands": [{
+      "command": "extension.pmlUglify",
+      "title": "PML Uglify"
+    }],
+    "breakpoints": [{
+      "language": "pml"
+    }]
   },
   "scripts": {
     "postinstall": "node ./node_modules/vscode/bin/install",

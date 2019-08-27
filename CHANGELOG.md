@@ -2,6 +2,10 @@
 
 All notable changes to the "pml" extension will be documented in this file.
 
+## [dev]
+
+- Bump `eslint-utils` from 1.3.1 to 1.4.2
+
 ## [0.1.14]
 
 - Extended support for `.mac` file extension.

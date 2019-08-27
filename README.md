@@ -55,10 +55,9 @@ Less significant snippets like:
 
 For a full list of changes please check `CHANGELOG.md`
 
-### 0.1.14
+### dev
 
-- Extended support for `.mac` file extension.
-- Minor changes to syntax highlighting.
+- Bump `eslint-utils` from 1.3.1 to 1.4.2
 
 ---
 

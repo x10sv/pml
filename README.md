@@ -14,7 +14,22 @@ It provides syntax highlight for `Programmable Macro Language`.
 
 > Supported File Types: `.pmlfrm`, `.pmlmac`, `.pmlfnc`, `.pmlobj`, `.pmldat`, `.pmlcmd` and `.mac`
 
-## Snippets
+### Code Navigation
+
+- Starting with version `0.2.0`, `Go to symbol` functionality was added for pml files.
+
+    It can be triggered by one of two ways: 
+
+    - First Way:
+        - Windows/Linux: `Ctrl + shift + o`
+        - macOS : `Cmd + shift + o`
+
+    - Second Way: 
+        - Windows/Linux: `Ctrl + P`, and typing `@`
+        - macOS : `Cmd + P`, and typing `@`
+    
+
+### Snippets
 
 Enable the support for tab-completion in Visual Studio code by setting:
 
@@ -41,13 +56,13 @@ Less significant snippets like:
 - **`pmlbut`** : Creates the basic code for adding a new button on a plm form.
 - **`using namespace`** : Suggests the most commonly used namespaces
 
-## Commands
+### Commands
 
 - `PML Uglify` will encrypt the pml file using a trivial encryption (for testing purposes).
 
 **`Important Known issue:`** This "encryption" type does not support utf-8 files. If you use any non-ASCII characters in the script this will result in an error and/or will produce unwanted/unpredictable results!
 
-## Code Completion
+### Code Completion
 
 - Basic code completion logic added
 
@@ -55,9 +70,10 @@ Less significant snippets like:
 
 For a full list of changes please check `CHANGELOG.md`
 
-### dev
+### v0.2.0
 
 - Bump `eslint-utils` from 1.3.1 to 1.4.2
+- Added `Go to symbol` functionality, to navigate between methods in an opened file.
 
 ---
 

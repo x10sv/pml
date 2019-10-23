@@ -1,6 +1,5 @@
 .vscode/**
 .vscode-test/**
-test/**
 .gitignore
 **/jsconfig.json
 **/*.map

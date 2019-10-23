@@ -2,7 +2,7 @@
   "name": "pml",
   "displayName": "PML",
   "description": "PML Language Highlighter and Snippets",
-  "version": "0.1.14",
+  "version": "0.2.0",
   "publisher": "angelincalu",
   "repository": {
     "url": "https://github.com/x10sv/pml"
@@ -24,31 +24,36 @@
     "onLanguage:pml",
     "onCommand:extension.pmlUglify"
   ],
-  "main": "./extension.js",
+  "main": "./out/extension",
   "contributes": {
-    "languages": [{
-      "id": "pml",
-      "aliases": [
-        "Programmable Macro Language",
-        "pml"
-      ],
-      "extensions": [
-        ".pmlfrm",
-        ".pmlmac",
-        ".pmlfnc",
-        ".pmlobj",
-        ".pmldat",
-        ".pmlcmd",
-        ".mac"
-      ],
-      "configuration": "./language-configuration.json"
-    }],
-    "grammars": [{
-      "language": "pml",
-      "scopeName": "source.pml",
-      "path": "./syntaxes/pml.tmLanguage.json"
-    }],
-    "snippets": [{
+    "languages": [
+      {
+        "id": "pml",
+        "aliases": [
+          "Programmable Macro Language",
+          "pml"
+        ],
+        "extensions": [
+          ".pmlfrm",
+          ".pmlmac",
+          ".pmlfnc",
+          ".pmlobj",
+          ".pmldat",
+          ".pmlcmd",
+          ".mac"
+        ],
+        "configuration": "./language-configuration.json"
+      }
+    ],
+    "grammars": [
+      {
+        "language": "pml",
+        "scopeName": "source.pml",
+        "path": "./syntaxes/pml.tmLanguage.json"
+      }
+    ],
+    "snippets": [
+      {
         "language": "pml",
         "path": "./snippets/pmlformg.json"
       },
@@ -77,23 +82,30 @@
         "path": "./snippets/helpers.json"
       }
     ],
-    "commands": [{
-      "command": "extension.pmlUglify",
-      "title": "PML Uglify"
-    }],
-    "breakpoints": [{
-      "language": "pml"
-    }]
+    "commands": [
+      {
+        "command": "extension.pmlUglify",
+        "title": "PML Uglify"
+      }
+    ],
+    "breakpoints": [
+      {
+        "language": "pml"
+      }
+    ]
   },
   "scripts": {
-    "postinstall": "node ./node_modules/vscode/bin/install",
-    "test": "node ./node_modules/vscode/bin/test"
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "lint": "tslint ./src/*.ts",
+    "watch": "tsc -watch -p ./"
   },
   "devDependencies": {
     "typescript": "^3.3.1",
-    "vscode": "^1.1.28",
     "eslint": "^5.13.0",
     "@types/node": "^8.10.25",
-    "@types/mocha": "^2.2.42"
+    "@types/mocha": "^2.2.42",
+    "@types/vscode": "^1.32.0",
+    "tslint": "^5.16.0"
   }
 }

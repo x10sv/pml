@@ -2,9 +2,10 @@
 
 All notable changes to the "pml" extension will be documented in this file.
 
-## [dev]
+## [0.2.0]
 
 - Bump `eslint-utils` from 1.3.1 to 1.4.2
+- Added `Go to symbol` functionality, to navigate between methods in an opened file.
 
 ## [0.1.14]
 

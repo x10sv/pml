@@ -1,0 +1,89 @@
+[
+	{
+		"library": "General",
+		"methods": 
+			[
+				{
+					"label": "handle ()",
+					"snippet": "handle (${1:0}, ${2:1000})",
+					"md" : "*Handle** Syntax can differentiate between specific error codes._"
+				}
+			]
+	},
+	{
+		"library": "MarDrafting",
+		"methods":
+			 [
+				{
+					"label" : "DwgCurrent()",
+					"md" : "The function checks if a drawing is current \n\n**Return Value**\nThe type of the result value (bool):\n\nfalse: No drawing is current\ntrue: A drawing is current"
+				},
+				{
+					"label" : "ModelIdentify(MarPointPlanar, MarModel)",
+					"snippet" : "ModelIdentify((!${1:MarPointPlanar}, !${2:MarModel}))",
+					"md" : "The function identifies a model, closest to a given point in the current drawing. Note: the drafting default keyword “AUTO_OUTFITTING_LEVEL” has impact on this function for outfitting models. Please see the documentation of the drafting default keywords for more information\n\n**Parameters**\nIdPnt \nThe identification point \nModel \nThe model to identify (Type & Name) \n\n**Return Value**\n(Object[])"
+				},
+				{
+					"label" : "ModelIdentify(MarPointPlanar, MarModel, MarElementHandle, MarElementHandle)",
+					"snippet" : "ModelIdentify((!${1:MarPointPlanar}, !${2:MarModel}, !${3:MarElementHandle}, !${4:MarElementHandle}))",
+					"md" : "The function identifies a model, closest to a given point in the current drawing. Note: the drafting default keyword “AUTO_OUTFITTING_LEVEL” has impact on this function for outfitting models. Please see the documentation of the drafting default keywords for more information\n\n**Parameters**\nIdPnt \nThe identification point \nModel \nModelSubview \nModelComponent \n\n**Return Value**\n3 parameters: The model identifiedHandle to the model subviewHandle to the model component"
+				},
+				{
+					"label" : "ModelPropertiesGet(MarElementHandle)",
+					"snippet" : "ModelPropertiesGet(!${1:MarElementHandle})",
+					"md" : "This function returns the properties of a model or part (subpicture on subview or component level or geometry handle)\n\n**Parameters**\nhandle\nHandle to the subview, component or geometry\n\n**Return Value**\nInstance of MarModel class (MarModel)"
+				},
+				{
+					"label" : "ElementHighlight(MarElementHandle)",
+					"snippet" : "ElementHighlight(MarElementHandle)",
+					"md" : "The function highlights an arbitrary entity/entities given by a handle/array of handles\n\n**Parameters**\nHandle\nSingle handle\n\n**Return Value**\nHandle to the highlighted entity/entities (MarElementHandle)"
+				},
+				{
+					"label" : "ElementHighlight(MarElementHandle[])",
+					"snippet" : "ElementHighlight(!${1:MarElementHandle})",
+					"md" : "The function highlights an arbitrary entity/entities given by a handle/array of handles\n\n**Parameters**\nHandles\nArray of handles\n\n**Return Value**\nHandle to the highlighted entity/entities (MarElementHandle)"
+				},
+				{
+					"label" : "highlightOff(MarElementHandle)",
+					"snippet" : "highlightOff(!${1:MarElementHandle})",
+					"md" : "The function turns off a given highlighting\n\n**Parameters**\nHandle\nHandle to the highlighted entity. (0 means all highlighted entities)"
+				},
+				{
+					"label" : "highlightOff(Double)",
+					"snippet" : ".highlightOff(${1:Double})",
+					"md" : "The function turns off a given highlighting\n\n**Parameters**\nHandle\nHandle to the highlighted entity. (0 means all highlighted entities)"
+				},
+				{
+					"label" : "highlightOff(Int)",
+					"snippet" : "highlightOff(${1:0})",
+					"md" : "The function turns off a given highlighting\n\n**Parameters**\nHandle\nHandle to the highlighted entity. (0 means all highlighted entities)"
+				},
+				{
+					"label" : "DwgRepaint()",
+					"snippet" : "DwgRepaint()",
+					"md" : "The function repaints entire drawing"
+				},
+				{
+					"label" : "ViewIdentify(MarPointPlanar)",
+					"snippet" : "ViewIdentify(!${1:MarPointPlanar})",
+					"md" : "The function returns a handle to a view, closest to a given point in the current drawing\n\n**Parameters**\nIdPnt\nThe identification point\n\n**Return Value**\nHandle to the view (MarElementHandle)"
+				},
+				{
+					"label" : "ViewIdentify(MarPointPlanar, MarPictWinExt)",
+					"snippet" : "ViewIdentify(!${1:MarPointPlanar}, !${2:MarPictWinExt})",
+					"md" : "The function returns a handle to a view, closest to a given point in the current drawing\n\n**Parameters**\nIdPnt\nThe identification point\nPictWinExt\nPicture element window extension. (Optional)\n\n**Return Value**\nHandle to the view (MarElementHandle)"
+				},
+				{
+					"label" : "ViewIdentify(String)",
+					"snippet" : "ViewIdentify(!${1:String})",
+					"md" : "The function returns a handle to a view, closest to a given point in the current drawing\n\n**Parameters**\nViewName\nThe name of the view\n\n**Return Value**\nHandle to the view (MarElementHandle)"
+				},
+				{
+					"label" : "ViewIdentify(String, MarPictWinExt)",
+					"snippet" : "ViewIdentify(!${1:String}, !${2:MarPictWinExt})",
+					"md" : "The function returns a handle to a view, closest to a given point in the current drawing\n\n**Parameters**\nViewName\nThe name of the view\nPictWinExt\nPicture element window extension. (Optional)\n\n**Return Value**\nHandle to the view (MarElementHandle)"
+				}
+			]
+		}
+]
+

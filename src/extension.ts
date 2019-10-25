@@ -8,7 +8,9 @@ import dictionary from './dictionary.json'
 // const data = dictionary.map(m => {
 // 	return (m.category);
 //     });
-    
+
+var variables: string[] = [];
+
 export function activate(context: vscode.ExtensionContext) {
 
     // Register Keywords
@@ -54,6 +56,8 @@ export function activate(context: vscode.ExtensionContext) {
         {language: "pml"}, new PmlDocumentSymbolProvider()
     ));
 
+    vscode.workspace.onDidChangeTextDocument(onDidChangeTextDocument);
+
 }
 
 export class PmlDocumentSymbolProvider implements vscode.DocumentSymbolProvider {
@@ -91,3 +95,119 @@ export class PmlDocumentSymbolProvider implements vscode.DocumentSymbolProvider 
     }
 }
 
+function onDidChangeTextDocument(e: vscode.TextDocumentChangeEvent) {
+    if (!vscode.window.activeTextEditor) {
+		return; // no editor
+    }
+    
+	let {
+		document
+	} = vscode.window.activeTextEditor;
+
+	var lines = document.lineCount;
+    
+    var varString: {name: string, type: string, from: Number, to: Number | null, global: Boolean};
+    var variables: any[] = [];
+    
+    for (let l = 0; l < lines; l++) {
+        var lineContent = document.lineAt(l).text
+
+        //replace consecutive spaces with one space
+        lineContent = lineContent.replace(/[ ]{2,}/g, '')
+
+        if (!lineContent.startsWith('--')) {
+            var regex = /(?:^|[^!])!+(\w+)/g;
+            var match;
+            var type = "";
+            var from = 0;
+            var global;
+
+            // if (lineContent.toLowerCase().startsWith('define ')) {
+            //     // set all empty to to: l-1
+            //     let OpenVars = variables.filter(variable => (variable.name !== varString.name && variable.to !== null));
+                
+            //     (OpenVars[0]).name.map((variable: { to: number; }) => {
+            //         variable.to = l-1;
+
+            //         return variable;
+            //     }
+                
+            // }
+            
+            while (match = regex.exec(lineContent)) {
+                if (match && match[1] != "this") {
+    
+                    var to = null;
+
+                    if (lineContent.toLowerCase().startsWith('setup form')) {
+                        type = "Form";
+                        from = l;
+                    }
+    
+                    if (lineContent.toLowerCase().includes(' = object marui()')) {
+                        type = "MarUi";
+                        from = l;
+                    }
+                    
+                    if (lineContent.toLowerCase().includes(' = object marutil()')) {
+                        type = "MarUtil";
+                        from = l;
+                    }
+                    
+                    if (lineContent.toLowerCase().includes(' = object mardrafting()')) {
+                        type = "MarDrafting";
+                        from = l;
+                    }
+                    
+                    if (lineContent.toLowerCase().includes(' = object marelementhandle()')) {
+                        type = "MarElementHandle";
+                        from = l;
+                    }
+                    
+                    if (lineContent.toLowerCase().includes(' = object marmodel()')) {
+                        type = "MarModel";
+                        from = l;
+                    }
+                    
+                    if (lineContent.toLowerCase().includes(' = object marpanelschema()')) {
+                        type = "MarPanelSchema";
+                        from = l;
+                    }
+                    
+                    if (lineContent.toLowerCase().includes(' = object marhullpan()')) {
+                        type = "MarHullPan";
+                        from = l;
+                    }
+    
+                    if (match[1].startsWith('!!')) {
+                        global = true;
+                    }else {
+                        global = false;
+                        to = lines;
+                    }
+                    
+    
+                    varString = {
+                        name: match[1],
+                        type: type,
+                        from: from,
+                        to: to,
+                        global: global
+                    };    
+                    
+                    if (variables.filter(variable => (variable.name !== varString.name && variable.to !== null))) {
+                        variables.push(varString);
+                    }
+                    
+                }
+            
+            }
+
+        }
+
+    }
+
+    console.log(variables);
+
+    return variables;
+}

@@ -127,7 +127,7 @@ function onDidChangeTextDocument(e: vscode.TextDocumentChangeEvent) {
                 variables.forEach(function (variable) {
 
                     if (variable.to === null) {
-                        variable.to = l - 1;
+                        variable.to = l;
                     }
 
                 });
@@ -138,35 +138,30 @@ function onDidChangeTextDocument(e: vscode.TextDocumentChangeEvent) {
                 if (match && match[1] != "this") {
 
                     var to = null;
+                    from = l;
 
                     if (lineContent.toLowerCase().startsWith('setup form')) {
                         type = "Form";
-                        from = l;
                     }
 
                     if (lineContent.toLowerCase().includes(' = object marui()')) {
                         type = "MarUi";
-                        from = l;
                     }
 
                     if (lineContent.toLowerCase().includes(' = object marutil()')) {
                         type = "MarUtil";
-                        from = l;
                     }
 
                     if (lineContent.toLowerCase().includes(' = object mardrafting()')) {
                         type = "MarDrafting";
-                        from = l;
                     }
 
                     if (lineContent.toLowerCase().includes(' = object marelementhandle()')) {
                         type = "MarElementHandle";
-                        from = l;
                     }
 
                     if (lineContent.toLowerCase().includes(' = object marmodel()')) {
                         type = "MarModel";
-                        from = l;
                     }
 
                     if (lineContent.toLowerCase().includes(' = object marpanelschema()')) {
@@ -176,15 +171,47 @@ function onDidChangeTextDocument(e: vscode.TextDocumentChangeEvent) {
 
                     if (lineContent.toLowerCase().includes(' = object marhullpan()')) {
                         type = "MarHullPan";
-                        from = l;
                     }
 
-                    if (match[1].startsWith('!!')) {
+                    if (lineContent.toLowerCase().includes(' = object netgridcontrol(')) {
+                        type = "NetGridControl";
+                    }
+
+                    if (lineContent.toLowerCase().includes(' = object netdatasource(')) {
+                        type = "NetDataSource";
+                    }
+
+                    if (lineContent.toLowerCase().includes(' = object pmlfilebrowser(')) {
+                        type = "PMLFileBrowser";
+                    }
+
+
+                    //set the global variable valid up to the end of the file
+                    if (lineContent.includes('!!' + match[1])) {
                         global = true;
                         to = lines;
                     } else {
                         global = false;
                     }
+
+
+                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' is array') || lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = array(')) {
+                        type = "array";
+                        from = l;
+                    }
+
+                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' is string')) {
+                        type = "string";
+                    }
+
+                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' is real')) {
+                        type = "real";
+                    }
+
+                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' is any')) {
+                        type = "any";
+                    }
+
 
 
                     varString = {

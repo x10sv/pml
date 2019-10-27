@@ -99,7 +99,7 @@
     "compile": "tsc -p ./",
     "lint": "tslint ./src/*.ts",
     "watch": "tsc -watch -p ./"
-    },
+  },
   "devDependencies": {
     "typescript": "^3.3.1",
     "eslint": "^5.13.0",

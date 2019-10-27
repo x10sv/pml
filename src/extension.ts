@@ -126,6 +126,7 @@ function onDidChangeTextDocument(e: vscode.TextDocumentChangeEvent) {
 
                 variables.forEach(function (variable) {
 
+                    //set "unclosed" variables valid until here
                     if (variable.to === null) {
                         variable.to = l;
                     }
@@ -200,7 +201,7 @@ function onDidChangeTextDocument(e: vscode.TextDocumentChangeEvent) {
                         from = l;
                     }
 
-                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' is string')) {
+                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' is string') || lineContent.includes(match[1] + "='") || lineContent.includes(match[1] + "=|")) {
                         type = "string";
                     }
 
@@ -215,14 +216,16 @@ function onDidChangeTextDocument(e: vscode.TextDocumentChangeEvent) {
 
 
                     varString = {
-                        name: match[1],
+                        name: match[1].toLowerCase(),
                         type: type,
                         from: from,
                         to: to,
                         global: global
                     };
 
-                    if (variables.filter(variable => (variable.name !== varString.name && variable.to !== null))) {
+                    var filtered =  variables.filter(variable => (variable.name === varString.name && variable.to === varString.to));
+                    
+                    if (filtered.length === 0) {
                         variables.push(varString);
                     }
 

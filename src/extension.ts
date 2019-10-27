@@ -141,36 +141,49 @@ function onDidChangeTextDocument(e: vscode.TextDocumentChangeEvent) {
                     var to = null;
                     from = l;
 
+                    //set the global variable valid up to the end of the file
+                    if (lineContent.includes('!!' + match[1])) {
+                        global = true;
+                        to = lines;
+                    } else {
+                        global = false;
+                    }
+
+
                     if (lineContent.toLowerCase().startsWith('setup form')) {
                         type = "Form";
                     }
 
-                    if (lineContent.toLowerCase().includes(' = object marui()')) {
+                    if (lineContent.toLowerCase().includes(' = object marui(')) {
                         type = "MarUi";
                     }
 
-                    if (lineContent.toLowerCase().includes(' = object marutil()')) {
+                    if (lineContent.toLowerCase().includes(' = object marutil(')) {
                         type = "MarUtil";
                     }
 
-                    if (lineContent.toLowerCase().includes(' = object mardrafting()')) {
+                    if (lineContent.toLowerCase().includes(' = object mardrafting(')) {
                         type = "MarDrafting";
                     }
 
-                    if (lineContent.toLowerCase().includes(' = object marelementhandle()')) {
+                    if (lineContent.toLowerCase().includes(' = object marelementhandle(')) {
                         type = "MarElementHandle";
                     }
 
-                    if (lineContent.toLowerCase().includes(' = object marmodel()')) {
+                    if (lineContent.toLowerCase().includes(' = object marmodel(')) {
                         type = "MarModel";
                     }
 
-                    if (lineContent.toLowerCase().includes(' = object marpanelschema()')) {
+                    if (lineContent.toLowerCase().includes(' = object mardex(')) {
+                        type = "MarDex";
+                    }
+
+                    if (lineContent.toLowerCase().includes(' = object marpanelschema(')) {
                         type = "MarPanelSchema";
                         from = l;
                     }
 
-                    if (lineContent.toLowerCase().includes(' = object marhullpan()')) {
+                    if (lineContent.toLowerCase().includes(' = object marhullpan(')) {
                         type = "MarHullPan";
                     }
 
@@ -182,27 +195,44 @@ function onDidChangeTextDocument(e: vscode.TextDocumentChangeEvent) {
                         type = "NetDataSource";
                     }
 
+                    if (lineContent.toLowerCase().includes(' = object marpythonengine(')) {
+                        type = "MarPythonEngine";
+                    }
+
                     if (lineContent.toLowerCase().includes(' = object pmlfilebrowser(')) {
                         type = "PMLFileBrowser";
                     }
 
-
-                    //set the global variable valid up to the end of the file
-                    if (lineContent.includes('!!' + match[1])) {
-                        global = true;
-                        to = lines;
-                    } else {
-                        global = false;
+                    if (lineContent.toLowerCase().includes(' = object file(')) {
+                        type = "file";
                     }
 
+                    if (lineContent.toLowerCase().includes(' = object datetime(')) {
+                        type = "DateTime";
+                    }
 
-                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' is array') || lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = array(')) {
+                    // add here something like var !x COLL
+                    if (lineContent.toLowerCase().includes(' = object collection(')) {
+                        type = "Collection";
+                    }
+
+                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' is array') || lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = array(') || lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = object array(')) {
                         type = "array";
                         from = l;
                     }
 
-                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' is string') || lineContent.includes(match[1] + "='") || lineContent.includes(match[1] + "=|")) {
+                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' is boolean') || lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = object boolean(') || lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = true') || lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = false')) {
+                        type = "boolean";
+                        from = l;
+                    }
+
+                    //add here something like var !x USER|HOST|CLOCK ...
+                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' is string') || lineContent.includes(match[1] + " = '") || lineContent.includes(match[1] + " = |")) {
                         type = "string";
+                    }
+
+                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' is gadget')) {
+                        type = "gadget";
                     }
 
                     if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' is real')) {
@@ -213,6 +243,15 @@ function onDidChangeTextDocument(e: vscode.TextDocumentChangeEvent) {
                         type = "any";
                     }
 
+                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = current project')) {
+                        type = "project";
+                        from = l;
+                    }
+
+                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = object dbref(')) {
+                        type = "DBRef";
+                        from = l;
+                    }
 
 
                     varString = {
@@ -223,8 +262,8 @@ function onDidChangeTextDocument(e: vscode.TextDocumentChangeEvent) {
                         global: global
                     };
 
-                    var filtered =  variables.filter(variable => (variable.name === varString.name && variable.to === varString.to));
-                    
+                    var filtered = variables.filter(variable => (variable.name === varString.name && variable.to === varString.to));
+
                     if (filtered.length === 0) {
                         variables.push(varString);
                     }

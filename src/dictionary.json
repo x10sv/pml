@@ -92,6 +92,18 @@
 		]
 	},
 	{
+		"library": "MarCaptureRegionPlanar",
+		"methods": []
+	},
+	{
+		"library": "MarContourPlanar",
+		"methods": []
+	},
+	{
+		"library": "MarRectanglePlanar",
+		"methods": []
+	},
+	{
 		"library": "MarElementHandle",
 		"methods": []
 	},
@@ -104,7 +116,23 @@
 		"methods": []
 	},
 	{
+		"library": "MarPointPlanar",
+		"methods": []
+	},
+	{
+		"library": "MarPoint",
+		"methods": []
+	},
+	{
+		"library": "MarSymbolicView",
+		"methods": []
+	},
+	{
 		"library": "MarHullPan",
+		"methods": []
+	},
+	{
+		"library": "MarPrintOptions",
 		"methods": []
 	},
 	{
@@ -132,7 +160,23 @@
 		"methods": []
 	},
 	{
+		"library": "format",
+		"methods": []
+	},
+	{
 		"library": "DateTime",
+		"methods": []
+	},
+	{
+		"library": "MarText",
+		"methods": []
+	},
+	{
+		"library": "MarSymbol",
+		"methods": []
+	},
+	{
+		"library": "MarColour",
 		"methods": []
 	},
 	{

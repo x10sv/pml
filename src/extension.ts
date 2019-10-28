@@ -4,6 +4,7 @@ import * as vscode from 'vscode';
 import Uglifier from './Uglifier'
 import keywords from './keywords.json'
 import dictionary from './dictionary.json'
+import { IContextDefinition } from 'mocha';
 
 // const data = dictionary.map(m => {
 // 	return (m.category);
@@ -56,7 +57,11 @@ export function activate(context: vscode.ExtensionContext) {
         { language: "pml" }, new PmlDocumentSymbolProvider()
     ));
 
-    vscode.workspace.onDidChangeTextDocument(onDidChangeTextDocument);
+    var variables = parseKeys()
+    vscode.workspace.onDidChangeTextDocument(parseKeys);
+
+
+    console.log(variables);
 
 }
 
@@ -95,7 +100,7 @@ export class PmlDocumentSymbolProvider implements vscode.DocumentSymbolProvider 
     }
 }
 
-function onDidChangeTextDocument(e: vscode.TextDocumentChangeEvent) {
+function parseKeys() {
     if (!vscode.window.activeTextEditor) {
         return; // no editor
     }
@@ -154,80 +159,136 @@ function onDidChangeTextDocument(e: vscode.TextDocumentChangeEvent) {
                         type = "Form";
                     }
 
-                    if (lineContent.toLowerCase().includes(' = object marui(')) {
+                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = object marui(')) {
                         type = "MarUi";
                     }
 
-                    if (lineContent.toLowerCase().includes(' = object marutil(')) {
+                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = object marutil(')) {
                         type = "MarUtil";
                     }
 
-                    if (lineContent.toLowerCase().includes(' = object mardrafting(')) {
+                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = object mardrafting(')) {
                         type = "MarDrafting";
                     }
 
-                    if (lineContent.toLowerCase().includes(' = object marelementhandle(')) {
+                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = object marcaptureregionplanar(')) {
+                        type = "MarCaptureRegionPlanar";
+                    }
+
+                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = object marcontourplanar(')) {
+                        type = "MarContourPlanar";
+                    }
+
+                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = object marrectangleplanar(')) {
+                        type = "MarRectanglePlanar";
+                    }
+
+                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = object marelementhandle(')) {
                         type = "MarElementHandle";
                     }
 
-                    if (lineContent.toLowerCase().includes(' = object marmodel(')) {
+                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = object marmodel(')) {
                         type = "MarModel";
                     }
 
-                    if (lineContent.toLowerCase().includes(' = object mardex(')) {
+                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = object mardex(')) {
                         type = "MarDex";
                     }
 
-                    if (lineContent.toLowerCase().includes(' = object marpanelschema(')) {
+                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = object marpanelschema(')) {
                         type = "MarPanelSchema";
-                        from = l;
                     }
 
-                    if (lineContent.toLowerCase().includes(' = object marhullpan(')) {
+                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = object marpoint(')) {
+                        type = "MarPoint";
+                    }
+
+                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = object marpointplanar(')) {
+                        type = "MarPointPlanar";
+                    }
+
+                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = object marsymbolicview(')) {
+                        type = "MarSymbolicView";
+                    }
+
+                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = object marhullpan(')) {
                         type = "MarHullPan";
                     }
 
-                    if (lineContent.toLowerCase().includes(' = object netgridcontrol(')) {
-                        type = "NetGridControl";
+                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = object marhullpan(')) {
+                        type = "MarHullPan";
                     }
 
-                    if (lineContent.toLowerCase().includes(' = object netdatasource(')) {
+                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = object marprintoptions(')) {
+                        type = "MarPrintOptions";
+                    }
+
+                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = object netdatasource(')) {
                         type = "NetDataSource";
                     }
 
-                    if (lineContent.toLowerCase().includes(' = object marpythonengine(')) {
+                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = object marpythonengine(')) {
                         type = "MarPythonEngine";
                     }
 
-                    if (lineContent.toLowerCase().includes(' = object pmlfilebrowser(')) {
+                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = object pmlfilebrowser(')) {
                         type = "PMLFileBrowser";
                     }
 
-                    if (lineContent.toLowerCase().includes(' = object file(')) {
+                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = object file(')) {
                         type = "file";
                     }
 
-                    if (lineContent.toLowerCase().includes(' = object datetime(')) {
+                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = object format(')) {
+                        type = "format";
+                    }
+
+                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = object datetime(')) {
                         type = "DateTime";
                     }
 
+                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = object martext(')) {
+                        type = "MarText";
+                    }
+
+                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = object marsymbol(')) {
+                        type = "MarSymbol";
+                    }
+
+                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = object marcolour(')) {
+                        type = "MarColour";
+                    }
+
                     // add here something like var !x COLL
-                    if (lineContent.toLowerCase().includes(' = object collection(')) {
+                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = object collection(')
+                        || lineContent.toLowerCase().includes('var !' + match[1].toLowerCase() + ' coll')
+                    ) {
                         type = "Collection";
                     }
 
-                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' is array') || lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = array(') || lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = object array(')) {
+                    var ArrayRegex = new RegExp("!" + match[1] + "\\[\\d+\\]", 'g');
+
+                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' is array') 
+                        || lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = array(') 
+                        || lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = object array(')
+                        || ArrayRegex.exec(lineContent)
+                    ) {
                         type = "array";
-                        from = l;
                     }
 
-                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' is boolean') || lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = object boolean(') || lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = true') || lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = false')) {
+                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' is boolean') 
+                        || lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = object boolean(') 
+                        || lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = true') 
+                        || lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = false')
+                    ) {
                         type = "boolean";
-                        from = l;
                     }
 
                     //add here something like var !x USER|HOST|CLOCK ...
-                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' is string') || lineContent.includes(match[1] + " = '") || lineContent.includes(match[1] + " = |")) {
+                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' is string') 
+                    || lineContent.includes(match[1] + " = '") 
+                    || lineContent.includes(match[1] + " = |")
+                    ) {
                         type = "string";
                     }
 
@@ -235,7 +296,11 @@ function onDidChangeTextDocument(e: vscode.TextDocumentChangeEvent) {
                         type = "gadget";
                     }
 
-                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' is real')) {
+                    var RealRegex = new RegExp("!" + match[1] + "\\s+=\\s+\\d+", 'g');
+
+                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' is real')
+                        || RealRegex.exec(lineContent)
+                    ) {
                         type = "real";
                     }
 
@@ -245,12 +310,10 @@ function onDidChangeTextDocument(e: vscode.TextDocumentChangeEvent) {
 
                     if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = current project')) {
                         type = "project";
-                        from = l;
                     }
 
                     if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = object dbref(')) {
                         type = "DBRef";
-                        from = l;
                     }
 
 
@@ -262,10 +325,21 @@ function onDidChangeTextDocument(e: vscode.TextDocumentChangeEvent) {
                         global: global
                     };
 
-                    var filtered = variables.filter(variable => (variable.name === varString.name && variable.to === varString.to));
+                    var filterTo = variables.filter(variable => (variable.name === varString.name && variable.to === varString.to));
 
-                    if (filtered.length === 0) {
+                    if (filterTo.length === 0) {
                         variables.push(varString);
+                    }
+
+
+                    if (type !== null) {
+                        variables.forEach(function (variable) {
+
+                            if (variable.name === varString.name && variable.type === null) {
+                                variable.type = type;
+                            }
+        
+                        });
                     }
 
                 }
@@ -276,7 +350,60 @@ function onDidChangeTextDocument(e: vscode.TextDocumentChangeEvent) {
 
     }
 
-    console.log(variables);
+    var Recognized = variables.filter(variable => (variable.type !== null));
+    // var RecognizedKeyNames = Recognized.map(m => {
+    //     return (m.name);
+    //     });
 
-    return variables;
+	// const SecondLevel = vscode.languages.registerCompletionItemProvider('pml', {
+	// 		provideCompletionItems(document: vscode.TextDocument, position: vscode.Position) {
+		
+	// 			//console.log (topmethods)
+	// 			let linePrefix = document.lineAt(position).text.substr(0, position.character);
+	// 			if (!endsWithAny((RecognizedKeyNames),linePrefix,".")) {
+	// 				return undefined;
+    //             }
+                
+    //             var newprefix = linePrefix.slice(0,-1);
+    //             var filtereddata = Recognized.filter(meth => meth.name === newprefix);
+                      
+	// 			return (filtereddata[0].name).map((submethod: { type: string; }) => {
+
+    //                 const filteredMethods = dictionary.filter(methods => methods.library === submethod.type);
+
+    //                 let Methods = (filteredMethods[0].methods).map(method => {
+
+    //                     let item = new vscode.CompletionItem(method.label, vscode.CompletionItemKind.Method);
+        
+    //                     if (method.snippet) {
+    //                         item.insertText = new vscode.SnippetString(method.snippet);
+    //                     }
+        
+    //                     if (method.md) {
+    //                         item.documentation = new vscode.MarkdownString(method.md);
+    //                     }
+        
+    //                     return item;
+        
+    //                 });
+
+                    
+    //                 return Methods;
+    //             });
+    //         }
+    //     } , '.' // triggered whenever a '.' is being typed
+    // );
+
+
+    return Recognized;
+}
+
+
+
+function endsWithAny(suffixes: string[], string: string, delim: string) {
+    for (let suffix of suffixes) {
+        if(string.endsWith(suffix + delim))
+            return true;
+    }
+    return false;
 }

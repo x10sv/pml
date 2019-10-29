@@ -4,15 +4,10 @@ import * as vscode from 'vscode';
 import Uglifier from './Uglifier'
 import keywords from './keywords.json'
 import dictionary from './dictionary.json'
-import { IContextDefinition } from 'mocha';
 
-// const data = dictionary.map(m => {
-// 	return (m.category);
-//     });
+let knownVariables: any;
 
-var variables: string[] = [];
-
-export function activate(context: vscode.ExtensionContext) {
+export function activate(Context: vscode.ExtensionContext) {
 
     // Register Keywords
     let RegisterKeywords = vscode.languages.registerCompletionItemProvider('pml', {
@@ -24,48 +19,18 @@ export function activate(context: vscode.ExtensionContext) {
         }
     });
 
-
-    // Register General Methods
-    let RegisterGeneralMethods = vscode.languages.registerCompletionItemProvider('pml', {
-
-        provideCompletionItems(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken, context: vscode.CompletionContext) {
-
-            const filteredGeneralMethods = dictionary.filter(methods => methods.library === "General");
-            let Methods = (filteredGeneralMethods[0].methods).map(method => {
-
-                let item = new vscode.CompletionItem(method.label, vscode.CompletionItemKind.Method);
-
-                if (method.snippet) {
-                    item.insertText = new vscode.SnippetString(method.snippet);
-                }
-
-                if (method.md) {
-                    item.documentation = new vscode.MarkdownString(method.md);
-                }
-
-                return item;
-
-            });
-
-            return Methods;
-        }
-
-    });
-
-    context.subscriptions.push(RegisterKeywords, RegisterGeneralMethods, Uglifier);
-    context.subscriptions.push(vscode.languages.registerDocumentSymbolProvider(
-        { language: "pml" }, new PmlDocumentSymbolProvider()
-    ));
-
-    var variables = parseKeys()
+    Context.subscriptions.push(RegisterKeywords, Uglifier);
+    
     vscode.workspace.onDidChangeTextDocument(parseKeys);
 
+    registerProviders(Context, knownVariables);
 
-    console.log(variables);
+
 
 }
 
-export class PmlDocumentSymbolProvider implements vscode.DocumentSymbolProvider {
+// Document Symbol Provider
+class PmlDocumentSymbolProvider implements vscode.DocumentSymbolProvider {
     public provideDocumentSymbols(document: vscode.TextDocument, token: vscode.CancellationToken): Thenable<vscode.SymbolInformation[]> {
         return new Promise((resolve, reject) => {
             var symbols: any[] = [];
@@ -100,10 +65,103 @@ export class PmlDocumentSymbolProvider implements vscode.DocumentSymbolProvider 
     }
 }
 
+
+function registerProviders(Context : vscode.ExtensionContext, knownVariables: any)
+{
+    let subscriptions = Context.subscriptions;
+    let langs = vscode.languages;
+
+    subscriptions.push(langs.registerCompletionItemProvider("pml", new GeneralMethods()));
+    subscriptions.push(langs.registerCompletionItemProvider("pml", new VariableMethods(knownVariables),'.'));
+    subscriptions.push(langs.registerDocumentSymbolProvider("pml", new PmlDocumentSymbolProvider()));
+
+}
+
+class GeneralMethods {
+    provideCompletionItems(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken, context: vscode.CompletionContext) {
+
+        const filteredGeneralMethods = dictionary.filter(methods => methods.library === "General");
+        let Methods = (filteredGeneralMethods[0].methods).map(method => {
+
+            let item = new vscode.CompletionItem(method.label, vscode.CompletionItemKind.Method);
+
+            if (method.snippet) {
+                item.insertText = new vscode.SnippetString(method.snippet);
+            }
+
+            if (method.md) {
+                item.documentation = new vscode.MarkdownString(method.md);
+            }
+
+            return item;
+
+        });
+
+        return Methods;
+    }
+}
+
+class VariableMethods {
+
+    variables: any;
+    
+    constructor(variables: any) {
+        this.variables = variables;
+    }
+
+
+    provideCompletionItems(document: vscode.TextDocument, position: vscode.Position) {
+        let list: any = [];
+        let variables = this.variables;
+
+        if (variables) {
+
+            var varNames = variables.forEach(function (v: any) {
+                return (v.name);
+            });
+
+            let linePrefix = document.lineAt(position).text.substr(0, position.character);
+
+            if (!endsWithAny(
+                (varNames),linePrefix,".")) {
+                return  ;
+            }
+
+            variables.forEach(function (variable: any) {
+
+                const filteredMethods = dictionary.filter(methods => methods.library === variable.type);
+
+                    let Methods = (filteredMethods[0].methods).map(method => {
+
+                        let item = new vscode.CompletionItem("!" + variable.name + "." + method.label, vscode.CompletionItemKind.Method);
+        
+                        if (method.snippet) {
+                            item.insertText = new vscode.SnippetString(method.snippet);
+                        }
+        
+                        if (method.md) {
+                            item.documentation = new vscode.MarkdownString(method.md);
+                        }
+        
+                        return item;
+        
+                    });
+                
+                    list.push(Methods);
+
+            });
+        }
+        return list;
+    }
+
+
+}
+
+
 function parseKeys() {
     if (!vscode.window.activeTextEditor) {
         return; // no editor
-    }
+    } 
 
     let {
         document
@@ -351,56 +409,14 @@ function parseKeys() {
     }
 
     var Recognized = variables.filter(variable => (variable.type !== null));
-    // var RecognizedKeyNames = Recognized.map(m => {
-    //     return (m.name);
-    //     });
 
-	// const SecondLevel = vscode.languages.registerCompletionItemProvider('pml', {
-	// 		provideCompletionItems(document: vscode.TextDocument, position: vscode.Position) {
-		
-	// 			//console.log (topmethods)
-	// 			let linePrefix = document.lineAt(position).text.substr(0, position.character);
-	// 			if (!endsWithAny((RecognizedKeyNames),linePrefix,".")) {
-	// 				return undefined;
-    //             }
-                
-    //             var newprefix = linePrefix.slice(0,-1);
-    //             var filtereddata = Recognized.filter(meth => meth.name === newprefix);
-                      
-	// 			return (filtereddata[0].name).map((submethod: { type: string; }) => {
-
-    //                 const filteredMethods = dictionary.filter(methods => methods.library === submethod.type);
-
-    //                 let Methods = (filteredMethods[0].methods).map(method => {
-
-    //                     let item = new vscode.CompletionItem(method.label, vscode.CompletionItemKind.Method);
-        
-    //                     if (method.snippet) {
-    //                         item.insertText = new vscode.SnippetString(method.snippet);
-    //                     }
-        
-    //                     if (method.md) {
-    //                         item.documentation = new vscode.MarkdownString(method.md);
-    //                     }
-        
-    //                     return item;
-        
-    //                 });
-
-                    
-    //                 return Methods;
-    //             });
-    //         }
-    //     } , '.' // triggered whenever a '.' is being typed
-    // );
-
-
+    knownVariables = Recognized;
+    
     return Recognized;
 }
 
 
-
-function endsWithAny(suffixes: string[], string: string, delim: string) {
+function endsWithAny(suffixes: any, string: string, delim: string) {
     for (let suffix of suffixes) {
         if(string.endsWith(suffix + delim))
             return true;

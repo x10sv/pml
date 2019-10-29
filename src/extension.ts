@@ -8,25 +8,12 @@ import dictionary from './dictionary.json'
 let knownVariables: any;
 
 export function activate(Context: vscode.ExtensionContext) {
-
-    // Register Keywords
-    let RegisterKeywords = vscode.languages.registerCompletionItemProvider('pml', {
-
-        provideCompletionItems() {
-            return keywords.map(keyword => {
-                return new vscode.CompletionItem(keyword, vscode.CompletionItemKind.Keyword);
-            });
-        }
-    });
-
-    Context.subscriptions.push(RegisterKeywords, Uglifier);
-    
+   
     vscode.workspace.onDidChangeTextDocument(parseKeys);
 
     registerProviders(Context, knownVariables);
-
-
-
+    registerCommands(Context)
+    
 }
 
 // Document Symbol Provider
@@ -71,11 +58,32 @@ function registerProviders(Context : vscode.ExtensionContext, knownVariables: an
     let subscriptions = Context.subscriptions;
     let langs = vscode.languages;
 
+    subscriptions.push(langs.registerCompletionItemProvider("pml", new GeneralKeyboards()));
     subscriptions.push(langs.registerCompletionItemProvider("pml", new GeneralMethods()));
     subscriptions.push(langs.registerCompletionItemProvider("pml", new VariableMethods(knownVariables),'.'));
     subscriptions.push(langs.registerDocumentSymbolProvider("pml", new PmlDocumentSymbolProvider()));
 
 }
+
+
+function registerCommands (Context: vscode.ExtensionContext)
+{
+    let subscriptions = Context.subscriptions;
+    let langs = vscode.languages;
+
+    subscriptions.push(Uglifier);
+}
+
+
+
+class GeneralKeyboards {
+    provideCompletionItems() {
+        return keywords.map(keyword => {
+            return new vscode.CompletionItem(keyword, vscode.CompletionItemKind.Keyword);
+        });
+    }
+}
+
 
 class GeneralMethods {
     provideCompletionItems(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken, context: vscode.CompletionContext) {

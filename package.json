@@ -101,11 +101,11 @@
     "watch": "tsc -watch -p ./"
   },
   "devDependencies": {
-    "typescript": "^3.3.1",
-    "eslint": "^5.13.0",
-    "@types/node": "^8.10.25",
     "@types/mocha": "^2.2.42",
-    "@types/vscode": "^1.32.0",
-    "tslint": "^5.16.0"
+    "@types/node": "^8.10.60",
+    "@types/vscode": "^1.44.0",
+    "eslint": "^5.16.0",
+    "tslint": "^5.20.1",
+    "typescript": "^3.8.3"
   }
 }

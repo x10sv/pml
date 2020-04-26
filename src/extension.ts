@@ -5,15 +5,14 @@ import Uglifier from './Uglifier'
 import keywords from './keywords.json'
 import dictionary from './dictionary.json'
 
-let knownVariables: any;
 
 export function activate(Context: vscode.ExtensionContext) {
-   
+
     vscode.workspace.onDidChangeTextDocument(parseKeys);
 
-    registerProviders(Context, knownVariables);
+    registerProviders(Context, parseKeys());
     registerCommands(Context)
-    
+
 }
 
 // Document Symbol Provider
@@ -53,32 +52,70 @@ class PmlDocumentSymbolProvider implements vscode.DocumentSymbolProvider {
 }
 
 
-function registerProviders(Context : vscode.ExtensionContext, knownVariables: any)
-{
+function registerProviders(Context: vscode.ExtensionContext, knownVariables: any) {
     let subscriptions = Context.subscriptions;
     let langs = vscode.languages;
 
+
     subscriptions.push(langs.registerCompletionItemProvider("pml", new GeneralKeyboards()));
     subscriptions.push(langs.registerCompletionItemProvider("pml", new GeneralMethods()));
-    subscriptions.push(langs.registerCompletionItemProvider("pml", new VariableMethods(knownVariables),'.'));
+    subscriptions.push(langs.registerCompletionItemProvider("pml", new VariableMethods(parseKeys())));
     subscriptions.push(langs.registerDocumentSymbolProvider("pml", new PmlDocumentSymbolProvider()));
+
+    subscriptions.push(langs.registerCompletionItemProvider("pml", new DocumentMethods(), '!this.'));
 
 }
 
 
-function registerCommands (Context: vscode.ExtensionContext)
-{
+function registerCommands(Context: vscode.ExtensionContext) {
     let subscriptions = Context.subscriptions;
     let langs = vscode.languages;
 
     subscriptions.push(Uglifier);
 }
 
+class DocumentMethods {
+
+    provideCompletionItems(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken, context: vscode.CompletionContext) {
+
+        let methods: Array<vscode.CompletionItem> = [];
+
+        for (var i = 0; i < document.lineCount; i++) {
+            var line = document.lineAt(i);
+
+            let lineTrimmed: string = line.text.trim();
+
+            if (lineTrimmed.toLowerCase().startsWith("define method .")) {
+                let methodName = line.text.substr(15);
+                methods.push(new vscode.CompletionItem(methodName, vscode.CompletionItemKind.Method));
+            }
+
+        }
+
+        return methods;
+
+    }
+}
 
 
 class GeneralKeyboards {
-    provideCompletionItems() {
+    provideCompletionItems(document: vscode.TextDocument, position: vscode.Position, token: vscode.CancellationToken, context: vscode.CompletionContext) {
+
+        // const activeEditor = vscode.window.activeTextEditor;
+
         return keywords.map(keyword => {
+
+            // if (activeEditor) {
+            //     let activeLine = activeEditor.selection.active.line;
+            //     let activeLineText = document.lineAt(activeLine)
+            // } else {
+            //     let activeLineText = ''
+            // }
+
+            // if (activeLineText != '') {
+
+            // }
+
             return new vscode.CompletionItem(keyword, vscode.CompletionItemKind.Keyword);
         });
     }
@@ -112,55 +149,62 @@ class GeneralMethods {
 class VariableMethods {
 
     variables: any;
-    
+
     constructor(variables: any) {
         this.variables = variables;
     }
 
-
-    provideCompletionItems(document: vscode.TextDocument, position: vscode.Position) {
-        let list: any = [];
-        let variables = this.variables;
-
-        if (variables) {
-
-            var varNames = variables.forEach(function (v: any) {
-                return (v.name);
-            });
-
-            let linePrefix = document.lineAt(position).text.substr(0, position.character);
-
-            if (!endsWithAny(
-                (varNames),linePrefix,".")) {
-                return  ;
-            }
-
-            variables.forEach(function (variable: any) {
-
-                const filteredMethods = dictionary.filter(methods => methods.library === variable.type);
-
-                    let Methods = (filteredMethods[0].methods).map(method => {
-
-                        let item = new vscode.CompletionItem("!" + variable.name + "." + method.label, vscode.CompletionItemKind.Method);
-        
-                        if (method.snippet) {
-                            item.insertText = new vscode.SnippetString(method.snippet);
-                        }
-        
-                        if (method.md) {
-                            item.documentation = new vscode.MarkdownString(method.md);
-                        }
-        
-                        return item;
-        
-                    });
-                
-                    list.push(Methods);
-
-            });
-        }
-        return list;
+    provideCompletionItems() {
+        return this.variables.map((variable: { name: string; }) => {
+            return new vscode.CompletionItem("!" + variable.name, vscode.CompletionItemKind.Variable);
+        });
     }
+
+    // provideCompletionItems(document: vscode.TextDocument, position: vscode.Position) {
+    //     let list: any = [];
+    //     let variables = this.variables;
+
+    //     if (variables) {
+
+    // var varNames = variables.forEach(function (v: any) {
+    //     return (v.name);
+    // });
+
+    // let linePrefix = document.lineAt(position).text.substr(0, position.character);
+
+    // variables.forEach(function (variable: any) {
+
+    //     console.log(variable.name);
+
+    // const filteredMethods = dictionary.filter(methods => methods.library === variable.type);
+
+    // let item = new vscode.CompletionItem("!" + variable.name, vscode.CompletionItemKind.Variable);
+
+    // let Methods = (filteredMethods[0].methods).map(method => {
+
+    //     let item = new vscode.CompletionItem("!" + variable.name, vscode.CompletionItemKind.Method);
+
+    //     // if (method.snippet) {
+    //     //     item.insertText = new vscode.SnippetString(method.snippet);
+    //     // }
+
+    //     // if (method.md) {
+    //     //     item.documentation = new vscode.MarkdownString(method.md);
+    //     // }
+
+    //     return item;
+
+    // });
+
+    //             list.push(item);
+
+    //         });
+    //     }
+    //     console.log(list);
+
+    //     return list;
+
+    // }
 
 
 }
@@ -169,7 +213,7 @@ class VariableMethods {
 function parseKeys() {
     if (!vscode.window.activeTextEditor) {
         return; // no editor
-    } 
+    }
 
     let {
         document
@@ -186,6 +230,7 @@ function parseKeys() {
         //replace consecutive spaces with one space
         lineContent = lineContent.replace(/[ ]{2,}/g, '')
 
+        // Disregards commented lines
         if (!lineContent.startsWith('--')) {
             var regex = /(?:^|[^!])!+(\w+)/g;
             var match;
@@ -334,26 +379,26 @@ function parseKeys() {
 
                     var ArrayRegex = new RegExp("!" + match[1] + "\\[\\d+\\]", 'g');
 
-                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' is array') 
-                        || lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = array(') 
+                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' is array')
+                        || lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = array(')
                         || lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = object array(')
                         || ArrayRegex.exec(lineContent)
                     ) {
                         type = "array";
                     }
 
-                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' is boolean') 
-                        || lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = object boolean(') 
-                        || lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = true') 
+                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' is boolean')
+                        || lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = object boolean(')
+                        || lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = true')
                         || lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' = false')
                     ) {
                         type = "boolean";
                     }
 
                     //add here something like var !x USER|HOST|CLOCK ...
-                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' is string') 
-                    || lineContent.includes(match[1] + " = '") 
-                    || lineContent.includes(match[1] + " = |")
+                    if (lineContent.toLowerCase().includes('!' + match[1].toLowerCase() + ' is string')
+                        || lineContent.includes(match[1] + " = '")
+                        || lineContent.includes(match[1] + " = |")
                     ) {
                         type = "string";
                     }
@@ -404,7 +449,7 @@ function parseKeys() {
                             if (variable.name === varString.name && variable.type === null) {
                                 variable.type = type;
                             }
-        
+
                         });
                     }
 
@@ -418,15 +463,13 @@ function parseKeys() {
 
     var Recognized = variables.filter(variable => (variable.type !== null));
 
-    knownVariables = Recognized;
-    
     return Recognized;
 }
 
 
 function endsWithAny(suffixes: any, string: string, delim: string) {
     for (let suffix of suffixes) {
-        if(string.endsWith(suffix + delim))
+        if (string.endsWith(suffix + delim))
             return true;
     }
     return false;

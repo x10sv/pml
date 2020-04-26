@@ -6,7 +6,7 @@
 
 ## Requirements
 
-> Visual studio Code with a version greater than `"^1.21.1"`
+> Visual studio Code with a version greater than `"^1.29.1"`
 
 ## Features
 
@@ -28,6 +28,7 @@ It provides syntax highlight for `Programmable Macro Language`.
         - Windows/Linux: `Ctrl + P`, and typing `@`
         - macOS : `Cmd + P`, and typing `@`
     
+- Starting with version `0.2.0`, `Outline View` display for methods in the current opened file.
 
 ### Snippets
 

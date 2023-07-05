@@ -1,25 +1,48 @@
 {
-    "New PML Method Definition": {
-        "prefix": "pmlmet",
+    "New PML Command Definition": {
+        "prefix": "pmlcmd",
         "body": [
-            "--|-----------------------------------------------------------------------------------------------",
-            "--|  Method Name : .${1:methodName}()",
-            "--|-----------------------------------------------------------------------------------------------",
+            "--|------------------------------------------------------------------------------------------------",
             "--|",
-            "--|  Description : ${2:Short description here}",
-            "--|  Arguments   : ",
-            "--|  Return      : ",
             "--|",
-            "--|-----------------------------------------------------------------------------------------------",
+            "--| Copyright $CURRENT_YEAR to current year. Company Name. All rights reserved.",
+            "--|",
+            "--|",
+            "--| Other copyright Information goes here!",
+            "--|",
+            "--| Author: <First Last>",
+            "--| Date: \"$CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE\"",
+            "--| Filename: \"$TM_FILENAME\"",
+            "--|",
+            "--|------------------------------------------------------------------------------------------------",
             "",
-            "define method .${1}()",
+            "",
+            "setup command !!${1:$TM_FILENAME_BASE}()",
             "",
             "\t${0}",
             "",
+            "exit",
+            "--|------------------------------------------------------------------------------------------------",
+            "-- Method:      NameOfMethod",
+            "-- Description: Constructor",
+            "--|------------------------------------------------------------------------------------------------",
+            "define method .${2}()",
+            "  -- initialise events and command key",
+            "  !this.key     = 'AVEVA.YourAddin'",
+            "  !this.execute = 'execute'",
+            "endmethod",
+            "",
+            "--|------------------------------------------------------------------------------------------------",
+            "-- Method:      execute",
+            "-- Description: Execute event",
+            "--|------------------------------------------------------------------------------------------------",
+            "define method .execute(!args is ARRAY)",
+            "",
+            "   ",
+            "",            
             "endmethod"
 
-
         ],
-        "description": "Base for a new PML Method"
+        "description": "Base for a new PML Function"
     }
 }

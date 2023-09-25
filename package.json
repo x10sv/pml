@@ -71,6 +71,10 @@
       },
       {
         "language": "pml",
+        "path": "./snippets/pmlcmd.json"
+      },
+      {
+        "language": "pml",
         "path": "./snippets/pmlfunc.json"
       },
       {

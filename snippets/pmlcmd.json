@@ -1,0 +1,48 @@
+{
+    "New PML Command Definition": {
+        "prefix": "pmlcmd",
+        "body": [
+            "--|------------------------------------------------------------------------------------------------",
+            "--|",
+            "--|",
+            "--| Copyright $CURRENT_YEAR to current year. Company Name. All rights reserved.",
+            "--|",
+            "--|",
+            "--| Other copyright Information goes here!",
+            "--|",
+            "--| Author: <First Last>",
+            "--| Date: \"$CURRENT_YEAR-$CURRENT_MONTH-$CURRENT_DATE\"",
+            "--| Filename: \"$TM_FILENAME\"",
+            "--|",
+            "--|------------------------------------------------------------------------------------------------",
+            "",
+            "",
+            "setup command !!${1:$TM_FILENAME_BASE}()",
+            "",
+            "\t${0}",
+            "",
+            "exit",
+            "--|------------------------------------------------------------------------------------------------",
+            "-- Method:      NameOfMethod",
+            "-- Description: Constructor",
+            "--|------------------------------------------------------------------------------------------------",
+            "define method .${2}()",
+            "  -- initialise events and command key",
+            "  !this.key     = 'AVEVA.YourAddin'",
+            "  !this.execute = 'execute'",
+            "endmethod",
+            "",
+            "--|------------------------------------------------------------------------------------------------",
+            "-- Method:      execute",
+            "-- Description: Execute event",
+            "--|------------------------------------------------------------------------------------------------",
+            "define method .execute(!args is ARRAY)",
+            "",
+            "   ",
+            "",            
+            "endmethod"
+
+        ],
+        "description": "Base for a new PML Function"
+    }
+}

@@ -12,5 +12,149 @@
             "!!alert.${1|message,warning,error,confirm,question,input|}(${2})"
         ],
         "description": "Helper for !!alert global function"
-    }
+    },
+
+    "Do Index Loop": {
+        "prefix": "Do Index",
+        "body": [
+            "do !$1 index $2 \nenddo"
+        ],
+        "description": "Do Index Loop"
+   },
+
+   "Do Values Loop": {
+       "prefix": "Do Values",
+       "body": [
+           "do !$1 values $2 \nenddo"
+       ],
+       "description": "Do Values Loop"
+  },
+
+  "Do Indices Loop": {
+       "prefix": "Do Indices",
+       "body": [
+           "do !$1 indices $2 \nenddo"
+       ],
+       "description": "Do Indices Loop"
+   },
+
+   "Do To Loop": {
+       "prefix": "Do To Loop",
+       "body": [
+           "do !$1 to $2 \nenddo"
+       ],
+       "description": "Do To Loop: Used for ittration till number."
+   },
+
+   "Do From To Loop": {
+       "prefix": "Do From To Loop",
+       "body": [
+           "do !$1 from $2 to $3 \nenddo"
+       ],
+       "description": "Do From To Loop: Used for ittration from number till another number."
+   },
+
+   "Do From To By Loop": {
+       "prefix": "Do From To By Loop",
+       "body": [
+           "do !$1 from $2 to $3 by $4 \nenddo"
+       ],
+       "description": "Do From To By Loop: Used for ittration from number till another number in a step of number."
+   },
+
+   "Break If": {
+       "prefix": "Break If",
+       "body": [
+           "break if (!$1)"
+       ],
+       "description": "Break If"
+   },
+
+   "Skip If": {
+       "prefix": "skip If",
+       "body": [
+           "skip if (!$1)"
+       ],
+       "description": "Skip If"
+   },
+
+   "If Else": {
+       "prefix": "If Else",
+       "body": [
+           "if ($1) then\n  $2 \nelse \n  $3 \nendif"
+       ],
+       "description": "If Else"
+   },
+
+   "If": {
+       "prefix": "If",
+       "body": [
+           "if (!$1) then\n  $2 \nendif"
+       ],
+       "description": "If"
+   },
+
+   "HandleError": {
+       "prefix": "HandleError",
+       "body": [
+           "handle( $1, $2 ) \n  $3"
+       ],
+       "description": "HandleError"
+   },
+
+   "ElseHandleError": {
+       "prefix": "ElseHandleError",
+       "body": [
+           "elsehandle( $1, $2 ) \n  $3"
+       ],
+       "description": "ElseHandleError"
+   },
+
+   "HandleAny": {
+       "prefix": "HandleAny",
+       "body": [
+           "handle any"
+       ],
+       "description": "HandleAny"
+   },
+
+   "ElseHandleAny": {
+       "prefix": "ElseHandleAny",
+       "body": [
+           "elsehandle any"
+       ],
+       "description": "ElseHandleAny"
+   },
+
+   "HandleNone": {
+       "prefix": "HandleNone",
+       "body": [
+           "handle none"
+       ],
+       "description": "HandleNone"
+   },
+
+   "ElseHandleNone": {
+       "prefix": "ElseHandleNone",
+       "body": [
+           "elsehandle none"
+       ],
+       "description": "ElseHandleNone"
+   },
+
+   "EndHandle": {
+       "prefix": "EndHandle",
+       "body": [
+           "endhandle"
+       ],
+       "description": "EndHandle"
+   },
+   
+	"Q Var": {
+		"prefix": "Q Var",
+		"body": [
+			"Q Var !$1"
+		],
+		"description": "Q Var"
+	}
 }
